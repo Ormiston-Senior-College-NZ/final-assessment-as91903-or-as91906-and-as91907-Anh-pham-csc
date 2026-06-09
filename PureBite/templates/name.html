@@ -12,15 +12,21 @@
             <h1>PureBite</h1>
         <p class="left">Welcome to PureBite! Please enter the names of two foods to find out how similar they are.</p>
         </form>
-        <form method="post" class="right">
-            <h3>Enter the first food name </h3>
-            <input type="text" name="stfoodname" required>
-            <h3>Enter the second food name </h3>
-            <input type="text" name="ndfoodname" required>
-            <br><br>
-            <input type="submit" value="Submit">
-        </form>
+        <div class="right"> 
+            <div class="checker">
+                <form method="post" class="left_side_checker">
+                    <h3>Enter the first food name </h3>
+                    <input type="text" name="stfoodname" required>
+                    <h3>Enter the second food name </h3>
+                    <input type="text" name="ndfoodname" required>
+                    <br><br>
+                    <input type="submit" value="Submit">
+                </form>
+                <img src="{{ url_for('static', filename='default-img-in-the-checker.png') }}" alt="Check This Tool" class="right_side_checker"> 
+            </div>    
+        </div>       
     </div>
+        
     
 
 </body>

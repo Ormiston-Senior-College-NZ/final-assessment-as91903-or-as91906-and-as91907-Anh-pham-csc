@@ -12,5 +12,6 @@ def check():
 @app.route('/')
 def home():
     return redirect(url_for('check'))
+
 if __name__ == '__main__':
     app.run(debug=True)

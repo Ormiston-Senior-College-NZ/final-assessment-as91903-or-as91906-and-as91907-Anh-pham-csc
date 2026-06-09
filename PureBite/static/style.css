@@ -16,6 +16,27 @@
     padding: 20px;
 }
 
+.checker {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; 
+    height: auto;
+    align-items: start
+}
+
+.left_side_checker {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color:aquamarine
+}
+
+.right_side_checker {
+    height: auto;
+    padding: 20px;
+    margin-right: 20px;
+    width: 90%
+}
+    
 .left{
     background-color: rgb(53, 209, 230);
     padding: 20px;
@@ -24,10 +45,17 @@
 @media (max-width: 900px) {
     .container {
         grid-template-columns: 1fr;
-    }
-}
-@media (max-height: 900px) {
-    .container {
         height: auto;
     }
 }
+
+@media (max-height: 500px) {
+    .container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .left, .right{
+        font-size: 14px;
+    }
+}
+
