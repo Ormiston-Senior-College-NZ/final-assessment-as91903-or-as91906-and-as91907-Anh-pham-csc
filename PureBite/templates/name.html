@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>PureBite</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="body">
+    <header class="header">
+        <h1 class="title">PureBite</h1>
+        <input type="text" placeholder="🔎Search..." class="search">
+    </header>
     <div class = "container">
         <form class = "left">
             <h1>PureBite</h1>
@@ -26,8 +31,5 @@
             </div>    
         </div>       
     </div>
-        
-    
-
 </body>
 </html>

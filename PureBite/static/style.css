@@ -2,6 +2,31 @@
     background-color: #fcffde
 }
 
+.header {
+    background-color: #fcffde;
+    display: grid;
+    grid-template-columns: 2fr 3fr; 
+    gap: 20px;
+}
+
+.title {
+    font-family: 'Cherry Bomb One', cursive;
+    color: #5e9918;
+    text-align: left;
+    font-size: 70px;
+    margin: -10px;
+    margin-left: 60px;
+}
+
+.search {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #5e9918;
+    border-radius: 5px;
+    width: 80%;
+    margin-top: 20px;
+}
+
 .container{
     display: grid;
     grid-template-columns: 2fr 3fr; 
