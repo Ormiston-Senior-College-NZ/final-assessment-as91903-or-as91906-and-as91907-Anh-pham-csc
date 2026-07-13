@@ -1,3 +1,5 @@
+"""This is a web-app that created to provide more information
+about food poisoning and food incompatibility"""
 from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__)
