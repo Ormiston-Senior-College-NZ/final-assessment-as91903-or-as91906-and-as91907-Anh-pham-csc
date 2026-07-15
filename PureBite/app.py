@@ -1,5 +1,8 @@
-"""This is a web-app that created to provide more information
-about food poisoning and food incompatibility using Python (Flask) and React"""
+"""This is a web-app that created to:
+ - provide more information about food poisoning.
+ - introduce a food incompatibility checking tool.
+by using Python (Flask) and React."""
+
 import sqlite3
 from pathlib import Path 
 from flask import Flask, request, render_template, redirect, url_for
@@ -94,7 +97,6 @@ def create_database():
             "walnut oil", "flaxseed oil",
             "pumpkin seed oil", "macadamia nuts",
             "hazelnuts",
-
         ],
 
         "vegetables": [
@@ -122,27 +124,111 @@ def create_database():
         ], 
 
         "caffeinated": [
-            "energy drink",
-            "coffee",
-            "tea", 
+            "energy drink", "coffee", "tea", 
         ], 
 
         "alcohol": [
-            "beer", 
-            "wine",
-            "alcohol,"
+            "beer", "wine", "alcohol,"
         ]
     }
     rules = [
         ("dairy", "acidic", "Caution", 
-         "This combination can cause dairy to curdle. It is usually not harmful, but some people may find it uncomfortable."
+         "This combination can cause dairy to curdle."
+         "It is usually not harmful, but some people may find it uncomfortable."
         ), 
 
         ("alcohol", "caffeinated", "Avoid",
-         "Caffein can hide the effects of alcohol and make it easier to drink more intended."),
+         "Caffein can hide the effects of alcohol and make it easier to drink more intended."
+        ),
 
-        ("proteins", "proteins", "Avoid",
-         "Different proteins digest at different rates and need") 
+        ("proteins", "proteins", "Caution",
+         "Different proteins digest at different rates and need varying enzymes."
+         "Combining animal proteins may overload the degestive system."
+        ),
+
+        ("proteins", "starches", "Caution",
+         "They need different environment condition to digest. "
+         "When eaten together, they may cause slow digestion."
+        ),
+
+        ("proteins", "fruits", "Compatible"
+         "Human digestive system is fully capable of handling proteins and fruits together."
+         "Individuals with sensitive digestion or conditions (IBS) may notice some discomforts."
+        ),
+
+        ("proteins", "vegetables", "Compatible",
+        "Proteins and non-starchy vegetables are a beneficial combination "
+        "because it helps to ensure that the body receives all the essential nutrients for a healthy body." 
+        ),
+
+        ("proteins", "fats", "Compatible",
+         "Combining protein with fats is beneficial because it creates a balanced meal that supports overaal health."
+        ),
+
+        ("proteins", "dairy", ""),
+        ("proteins", "caffeinated"),
+        ("proteins", "alcohol"),
+        ("proteins", "acidic"),
+        ("proteins", "fermented food"),
+        ("proteins", "sugar"),
+        ("starches", "starches", "Compatible",
+        "Grains share the same steady starch digestion so thay can be eaten together." 
+        ),
+
+        ("starches", "fruits", "Avoid",
+         "Starches are digested quicker than fruits. "
+         "Combining them may cause bloating and gas."
+        ),
+
+        ("starches", "dairy", ""),
+        ("starches", "vegetables", ""),
+        ("starches", "fats", ""),
+        ("starches", "dairy", ""),
+        ("starches", "caffeinated"),
+        ("starches", "alcohol"),
+        ("starches", "acidic"),
+        ("starches", "fermented food"),
+        ("starches", "sugar"),
+        ("fruits", "fruits", ""),
+        ("fruits", "vegetables", ""),
+        ("fruits", "fats", ""),
+        ("fruits", "dairy", ""),
+        ("fruits", "caffeinated"),
+        ("fruits", "alcohol"),
+        ("fruits", "acidic"),
+        ("fruits", "fermented food"),
+        ("fruits", "sugar"),
+        ("vegetables", "vegetables", ""),
+        ("vegetables", "dairy", ""),
+        ("vegetables", "caffeinated"),
+        ("vegetables", "alcohol"),
+        ("vegetables", "acidic"),
+        ("vegetables", "fermented food"),
+        ("vegetables", "sugar"),
+        ("vegetables", "fats", ""),
+        ("fats", "fats", ""),
+        ("fats", "dairy", ""),
+        ("fats", "caffeinated"),
+        ("fats", "alcohol"),
+        ("fats", "acidic"),
+        ("fats", "fermented food"),
+        ("fats", "sugar"),
+        ("dairy", "dairy"),
+        ("dairy", "caffeinated"),
+        ("dairy", "alcohol"),
+        ("dairy", "sugar"),
+        ("dairy", "fermented food"),
+        ("caffeinated", "caffeinated"),
+        ("caffeinated", "alcohol"),
+        ("caffeinated", "fermented food"),
+        ("caffeinated", "sugar"),
+        ("alcohol", "alcohol"),
+        ("alcohol", "fermented food"),
+        ("alcohol", "sugar"),
+        ("fermented food", "fermented food",),
+        ("fermented food", "sugar",),
+        ("sugar", "sugar",),
+
     ]
     
     foods = []
