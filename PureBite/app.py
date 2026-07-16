@@ -157,20 +157,45 @@ def create_database():
         ),
 
         ("proteins", "vegetables", "Compatible",
-        "Proteins and non-starchy vegetables are a beneficial combination "
-        "because it helps to ensure that the body receives all the essential nutrients for a healthy body." 
+         "Proteins and non-starchy vegetables are a beneficial combination "
+         "because it helps to ensure that the body receives all the essential nutrients for a healthy body." 
         ),
 
         ("proteins", "fats", "Compatible",
          "Combining protein with fats is beneficial because it creates a balanced meal that supports overaal health."
         ),
 
-        ("proteins", "dairy", ""),
-        ("proteins", "caffeinated"),
-        ("proteins", "alcohol"),
-        ("proteins", "acidic"),
-        ("proteins", "fermented food"),
-        ("proteins", "sugar"),
+        ("proteins", "dairy", "Avoid",
+         "There will be too much proteins for stomach to digest. "
+         "This can lead to digestive problems such as bloating, indigestion, heartburn, "
+         "and even diarrhea, especially in children and people with sensitive digestive systems."
+        ),
+
+        ("proteins", "caffeinated", "Compatible",
+         "Caffeine doesn't prevent or reduce the protein-absorption ability of digestion."
+         " However, caffeine will prevent absorbing iron from meat."
+        ),
+
+        ("proteins", "alcohol", "Avoid",
+         "Alcohol will prevent the protein absorption ability of digestion and the ability of muscle building."
+        ),
+
+        ("proteins", "acidic", "Compatible",
+         "Vitamin C in acidic fruits increases iron absorption from meats"
+         " by chemically transforming iron into a form that is easier to absorb."
+        ),
+
+        ("proteins", "fermented food", "Compatible",
+         "Meat is an abundant source of protein but it takes a lot of time and energy "
+         "to break complex peptide bonds. Fermented foods contain natural lactic acid "
+         "that helps support the acidic environment of the stomach, stimulating digestive enzymes to work better." 
+        ),
+
+        ("proteins", "sugar", "Caution",
+         "It is both the core of muscle recovery and an ageing agent if used incorrectly"
+         " due to producing insulin."
+        ),
+
         ("starches", "starches", "Compatible",
         "Grains share the same steady starch digestion so thay can be eaten together." 
         ),
@@ -180,55 +205,292 @@ def create_database():
          "Combining them may cause bloating and gas."
         ),
 
-        ("starches", "dairy", ""),
-        ("starches", "vegetables", ""),
-        ("starches", "fats", ""),
-        ("starches", "dairy", ""),
-        ("starches", "caffeinated"),
-        ("starches", "alcohol"),
-        ("starches", "acidic"),
-        ("starches", "fermented food"),
-        ("starches", "sugar"),
-        ("fruits", "fruits", ""),
-        ("fruits", "vegetables", ""),
-        ("fruits", "fats", ""),
-        ("fruits", "dairy", ""),
-        ("fruits", "caffeinated"),
-        ("fruits", "alcohol"),
-        ("fruits", "acidic"),
-        ("fruits", "fermented food"),
-        ("fruits", "sugar"),
-        ("vegetables", "vegetables", ""),
-        ("vegetables", "dairy", ""),
-        ("vegetables", "caffeinated"),
-        ("vegetables", "alcohol"),
-        ("vegetables", "acidic"),
-        ("vegetables", "fermented food"),
-        ("vegetables", "sugar"),
-        ("vegetables", "fats", ""),
-        ("fats", "fats", ""),
-        ("fats", "dairy", ""),
-        ("fats", "caffeinated"),
-        ("fats", "alcohol"),
-        ("fats", "acidic"),
-        ("fats", "fermented food"),
-        ("fats", "sugar"),
-        ("dairy", "dairy"),
-        ("dairy", "caffeinated"),
-        ("dairy", "alcohol"),
-        ("dairy", "sugar"),
-        ("dairy", "fermented food"),
-        ("caffeinated", "caffeinated"),
-        ("caffeinated", "alcohol"),
-        ("caffeinated", "fermented food"),
-        ("caffeinated", "sugar"),
-        ("alcohol", "alcohol"),
-        ("alcohol", "fermented food"),
-        ("alcohol", "sugar"),
-        ("fermented food", "fermented food",),
-        ("fermented food", "sugar",),
-        ("sugar", "sugar",),
+        ("starches", "dairy", "Caution",
+         "This reduces the speed of starch digestion, helps glucose "
+         "enter the blood slowly, maintains stable energy and prolongs"
+         " the feeling of fulness. Carbon and insulin are also increased."
+        ),
 
+        ("starches", "vegetables", "Compatible",
+         "This is a good combination that will reduce the disadvantage "
+         "of starch and help you to have long-lasting satiety, effective "
+         "weight loss, and a healthy colon."
+        ),
+
+        ("starches", "fats", "Caution",
+         "This combination creates the most delicious dishes"
+         " (chips, butter bread, pizza, cakes) but contains many risks "
+         "for weight and metabolism if the source of fat is not controlled."
+        ),
+
+        ("starches", "caffeinated", "Compatible"
+         "Caffeine slightly increases the metabolic rate and stimulates the"
+         " release of energy from glucose. However, consuming too many "
+         "fast-digesting carbohydrates (sugar, flour) along with high doses"
+         " of caffeine can cause restlessness or rapid heartbeat in sensitive individuals."
+        ),
+
+        ("starches", "alcohol", "Avoid",
+         "The liver will prioritize metabolizing alcohol first and "
+         "temporarily halt the process of burning fat or releasing glycogen. "
+         "Carbohydrates consumed at this time are easily stored as excess fat "
+         "(especially abdominal and liver fat)."),
+
+        ("starches", "acidic", "Compatible",
+         "Modern medicine proves that the stomach has a strong acidic environment, "
+         "so it can digest both starch and acidic foods. "
+         "Mild acids even reduce the glycemic index of starch."
+        ),
+
+        ("starches", "fermented food", "Compatible",
+         "Organic acids in fermented foods slow down gastric emptying, "
+         "reducing the glycemic load. Lactic acid bacteria also help "
+         "the gut break down complex starch bonds more gently."
+        ),
+
+        ("starches", "sugar", "Avoid",
+         "Both are metabolized into glucose. Eating them together"
+         " creates a huge amount of empty calories, overloading "
+         "the pancreas with insulin, leading to fat accumulation, "
+         "insulin resistance, and accelerated skin aging."
+        ),
+
+        ("fruits", "fruits", "Compatible",
+         "Different types of fruits (sour, sweet, melon) can absolutely "
+         "be eaten together. The human body has enough multi-functional"
+         " enzymes to absorb simple sugars (fructose, glucose) and "
+         "vitamins at the same time without causing 'rotting' as"
+         " old macrobiotic theories suggest."
+        ),
+
+        ("fruits", "vegetables", "Compatible",
+         "This is the foundation of juices and salads. Fiber from "
+         "vegetables slows down the absorption of fructose from "
+         "fruits, helping to safely provide the body with abundant "
+         "vitamins and antioxidants."
+        ),
+
+        ("fruits", "fats", "Compatible",
+         "Many fruits contain fat-soluble vitamins (Vitamins A, E, K) "
+         "and antioxidants such as lycopene and beta-carotene. "
+         "When eaten with good fats (such as avocado, nuts, olive oil in salads),"
+         " the absorption rate of these vitamins increases 3-5 times."
+        ),
+
+        ("fruits", "dairy", "Compatible",
+         "Dairy provides protein and calcium, while fruit provides vitamin C and fiber."
+         " Vitamin C enhances the absorption of certain minerals in milk,"
+         " and the matrix structure of milk slows the absorption of sugar from fruit."
+        ),
+
+        ("fruits", "caffeinated", "Compatible",
+         "There is no negative chemical reaction between these two groups."
+         " Antioxidants in fruit combine with antioxidants in coffee/tea"
+         " to protect cells from oxidative stress."),
+
+        ("fruits", "alcohol", "Caution",
+         "Fructose in fruit can slightly increase the liver's rate"
+         " of alcohol metabolism, but drinking alcohol with large "
+         "amounts of sweet fruit will cause a surge in calories"
+         " and sugar, putting a great strain on the liver and"
+         " easily leading to weight gain."),
+
+        ("fruits", "acidic", "Compatible",
+         "Many fruits themselves contain natural acids."
+         " Eating them together doesn't harm a healthy stomach. "
+         "However, if you have gastroesophageal reflux disease"
+         " (GERD) or ulcers, consuming too much acid at once"
+         " can irritate the lining."),
+
+        ("fruits", "fermented food", "Compatible",
+         "Soluble fiber in fruits (like pectin) acts as a prebiotic"
+         " (food for beneficial bacteria). When combined with "
+         "probiotic bacteria in fermented foods, they help the gut microbiome thrive."),
+
+        ("fruits", "sugar", "Avoid",
+         "Fruits already contain natural sugar. Adding granulated sugar "
+         "or syrup to fruits negates the health benefits, causes blood "
+         "sugar spikes, and contributes to tooth decay."),
+
+        ("vegetables", "vegetables", "Compatible",
+         "Eating a variety of vegetables (in many different colors)"
+         " helps the body receive a full range of vitamins, minerals,"
+         " and diverse phytochemicals to fight disease."),
+
+        ("vegetables", "dairy", "Compatible",
+         "Fats in dairy products (like cheese, butter) "
+         "help dissolve and absorb fat-soluble vitamins (A, D, E, K)"
+         " which are abundant in leafy green vegetables."),
+
+        ("vegetables", "caffeinated", "Caution",
+         "There are no adverse interactions, except for one note:"
+         " Tannins and caffeine in tea/coffee may reduce the "
+         "absorption of non-heme iron (plant-based iron) "
+         "found in vegetables like spinach and kale if "
+         "consumed too close together."),
+
+        ("vegetables", "alcohol", "Compatible",
+         "Vegetables are rich in fiber and water, "
+         "which slows the rate of alcohol absorption into the "
+         "bloodstream, helping to protect the stomach lining "
+         "and reduce the acute effects of alcohol intoxication."),
+
+        ("vegetables", "acidic", "Compatible",
+         "Squeezing lemon or adding vinegar to vegetables (salad) "
+         "not only enhances the flavor, but the mild acidity also "
+         "helps convert iron from plants into a more easily absorbed "
+         "form for the body."),
+
+        ("vegetables", "fermented food", "Compatible",
+         "The fiber in vegetables is an excellent source of"
+         " nourishment for the beneficial bacteria found in "
+         "fermented foods, helping to optimize the digestive system."),
+
+        ("vegetables", "sugar", "Caution",
+         "Adding too much sugar to vegetables during preparation "
+         "reduces their natural nutritional value and increases "
+         "unnecessary calories."),
+
+        ("vegetables", "fats", "Compatible",
+         "Healthy fats are essential solvents for the body "
+         "to absorb powerful antioxidants."),
+
+        ("fats", "fats", "Caution",
+         "Combining different sources of fat is normal. "
+         "However, it is advisable to prioritize combining"
+         " unsaturated fats (olive oil, avocado) and limit"
+         " the combination of too much saturated animal fat "
+         "or trans fat due to cardiovascular risk."),
+
+        ("fats", "dairy", "Caution",
+         "Dairy products already contain fat. "
+         "Adding more fat doesn't harm digestion, but it "
+         "rapidly increases the calorie density of the dish, "
+         "easily leading to weight gain."),
+
+        ("fats", "caffeinated", "Compatible",
+         "This is the basis of the popular 'bulletproof coffee'"
+         " (coffee mixed with butter/coconut oil) in the Keto diet."
+         " Fat slows the absorption of caffeine, allowing "
+         "the energy from caffeine to be released more steadily "
+         "and for a longer period, without sudden energy drops."),
+
+        ("fats", "alcohol", "Avoid",
+         "When alcohol is present, the liver stops burning fat "
+         "to focus on alcohol detoxification. Eating greasy foods "
+         "while drinking alcohol will cause all that fat to accumulate, "
+         "increasing the risk of fatty liver disease and acute pancreatitis."),
+
+        ("fats", "acidic", "Compatible",
+         "This is the structure of classic dipping sauces. "
+         "Acidity helps to break down and emulsify fat molecules, "
+         "making it easier for lipase enzymes in the small intestine"
+         " to break down and digest fat, reducing the feeling of satiety."),
+
+        ("fats", "fermented food", "Compatible",
+         "Organic acids and probiotics in fermented foods "
+         "help the digestive system process high-fat meals "
+         "more gently, reducing bloating."),
+
+        ("fats", "sugar", "Avoid",
+         "The most dangerous combination for metabolism. "
+         "Sugar causes a spike in insulin, and insulin will"
+         " order the body to store all the accompanying "
+         "fat in adipose tissue immediately, while also"
+         " causing systemic inflammation."),
+
+        ("dairy", "dairy", "Compatible",
+         "Combining dairy products is perfectly safe"
+         " because they share the same protein structure "
+         "(casein/whey) and lactose, and the body digests"
+         " them using the same enzyme system."),
+
+        ("dairy", "caffeinated", "Compatible",
+         "This combination is extremely popular."
+         " A small note: tannins in tea/coffee may bind "
+         "to a small amount of calcium in milk, reducing absorption,"
+         " but this is negligible for people with a balanced diet."),
+
+        ("dairy", "alcohol", "Caution",
+         "They are ingredients in some cocktails. The fat and protein"
+         " in milk create a protective layer on the stomach lining, "
+         "slowing down the absorption of alcohol. However, high"
+         " concentrations of alcohol can coagulate the proteins "
+         "in milk, which can cause bloating in some people with"
+         " sensitive stomachs."),
+
+        ("dairy", "sugar", "Caution",
+         "Dairy contains naturally occurring lactose. Adding too much "
+         "refined sugar increases the glycemic load and empty calories, "
+         "easily leading to weight gain and increased risk of "
+         "insulin resistance."),
+
+        ("dairy", "fermented food", "Compatible",
+         "Combining these helps supplement a diverse range"
+         " of beneficial bacteria strains in the gut and "
+         "increases the bioavailability of minerals."),
+
+        ("caffeinated", "caffeinated", "Caution",
+         "Consuming caffeine from multiple sources at the same time"
+         " adds up the caffeine content. If exceeding 400mg/day, "
+         "it will overstimulate the central nervous system,"
+         " causing rapid heartbeat, anxiety, insomnia, and"
+         " increased blood pressure."),
+
+        ("caffeinated", "fermented food", "Compatible",
+         "No negative chemical interactions have been observed"
+         " between these two groups. The acids in coffee/tea"
+         " and the organic acids in fermented foods do not "
+         "negatively affect each other in the digestive system "
+         "of a healthy person."),
+
+        ("caffeinated", "sugar", "Caution",
+         "Caffeine provides a temporary boost of energy, "
+         "while sugar causes a rapid increase in blood sugar. "
+         "When this sugar level drops, you will feel tired,"
+         " lethargic, and crave more food."),
+
+        ("alcohol", "alcohol", "Avoid",
+         "Mixing different types of alcoholic beverages doesn't"
+         " cause immediate alcohol poisoning, but it makes it"
+         " difficult to control your alcohol intake, increases"
+         " the risk of overdrinking, and exacerbates hangover "
+         "symptoms due to the different congeners in each mixed "
+         "type of alcohol."),
+
+        ("alcohol", "fermented food", "Caution",
+         "Both fermented foods and some types of alcohol contain "
+         "high levels of biogenic amines. In sensitive individuals"
+         " or those lacking the enzyme that breaks down histamine,"
+         " this combination can trigger allergic reactions,"
+         " facial flushing, headaches, or increased blood pressure."),
+
+        ("alcohol", "sugar", "Avoid0",
+         "The sweetness of sugar masks the harshness of alcohol,"
+         " causing you to drink more without realizing it. "
+         "Sugar and alcohol simultaneously put immense metabolic"
+         " pressure on the liver, accelerating the formation of "
+         "fatty liver disease."),
+
+        ("fermented food", "fermented food", "Compaatible",
+        "Combining different fermented foods helps diversify"
+        " the beneficial bacteria strains (Lactobacillus, Bifidobacterium,"
+        " beneficial yeasts) in the gut, making the"
+        " microbiome richer and healthier."),
+
+        ("fermented food", "sugar", "Caution",
+         "During processing (such as pickling, making kombucha), "
+         "sugar is food for beneficial bacteria to ferment into "
+         "organic acids (very good). However, if too much sugar "
+         "is added to already fermented food for direct consumption,"
+         " this excess sugar can feed harmful bacteria or"
+         " negative yeasts (such as Candida) in the gut."),
+
+        ("sugar", "sugar", "Avoid",
+         "Combining different types of refined sugars"
+         " simply increases the concentration of empty "
+         "calories consumed, overloading the pancreas "
+         "and liver, leading to obesity and type 2 diabetes."),
     ]
     
     foods = []
