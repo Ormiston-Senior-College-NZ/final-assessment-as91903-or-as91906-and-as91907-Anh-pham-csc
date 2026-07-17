@@ -30,8 +30,14 @@
                     <input type="submit" value="Submit">
                 </form>
                 <img src="{{ url_for('static', filename='default-img-in-the-checker.png') }}" alt="Check This Tool" class="right_side_checker"> 
+                {% if result %}
+                <div class ="result">
+                    <h2>{{result.status}}</h2>
+                    <p> {{result.message}} </p>
+                </div>    
+                {% endif %}
             </div>    
-        </div>       
+        </div>   
     </div>
 </body>
 </html>

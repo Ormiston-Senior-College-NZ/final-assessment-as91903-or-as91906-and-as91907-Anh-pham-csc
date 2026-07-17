@@ -11,15 +11,17 @@ app = Flask(__name__)
 DATABASE = Path(__file__).with_name("purebite.db")
 
 
-"Connect the database with the python file"
 def get_db_connection():
+    """Connect the database with the python file"""
+
     connection = sqlite3.connect(DATABASE)
     connection.row_factory = sqlite3.Row
     return connection 
 
 
-"""Create a data base for the food compatibility checker"""
 def create_database():
+    """Create a data base for the food compatibility checker"""
+
     connection = get_db_connection()
     cursor = connection.cursor()
 
@@ -34,7 +36,7 @@ def create_database():
         CREATE TABLE IF NOT EXISTS combination_rules (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             group_one TEXT NOT NULL,
-            group two TEXT NOT NULL, 
+            group_two TEXT NOT NULL, 
             result TEXT NOT NULL, 
             message TEXT NOT NULL)
     """)
@@ -55,7 +57,7 @@ def create_database():
             "apple", "passionfruit", "cranberry",
         ],
 
-        "fruit": [
+        "fruits": [
             "banana", "apple", "pear", "mango",
             "strawberry","coconut", "pineapple",
             "kiwi", "blueberry", "raspberry", "blackberry",
@@ -64,7 +66,7 @@ def create_database():
             "date", "dragon fruit", "lychee", "guava",
         ],
 
-        "protein": [
+        "proteins": [
             "beef", "chicken", "turkey", "pork", "lamb",
             "venison", "duck", "salmon", "tuna", "sardine",
             "mackerel", "cod", "shrimp", "crab", "lobster",
@@ -77,12 +79,12 @@ def create_database():
         ], 
 
         "starches": [
-            "white rice", "brown rice", "basmati rice",
+            "white rice", "rice", "brown rice", "basmati rice",
             "jasmine rice","wheat", "bread", "whole-grain bread",
             "pasta", "noodles", "udon", "soba", "rice noodles",
             "vermicelli", "corn", "cornmeal", "tortilla",
             "oats", "barley", "rye", "buckwheat", "millet",
-            "sorghum", "potatoes", "sweet potatoes", "yams", 
+            "sorghum", "potato", "sweet potato", "yams", 
             "cassava", "tapioca", "cereal", "granola", 
             "crackers", "pretzels", "bagels", "pancakes",
             "waffles", "muffins", "donuts", "croissant",
@@ -147,11 +149,13 @@ def create_database():
         ),
 
         ("proteins", "starches", "Caution",
-         "They need different environment condition to digest. "
+         "They need different environment conditions to digest. "
          "When eaten together, they may cause slow digestion."
+         "In one meal, you should eat proteins first so that it can be digested first, "
+         "then starches for a better digestion. "
         ),
 
-        ("proteins", "fruits", "Compatible"
+        ("proteins", "fruits", "Compatible",
          "Human digestive system is fully capable of handling proteins and fruits together."
          "Individuals with sensitive digestion or conditions (IBS) may notice some discomforts."
         ),
@@ -162,7 +166,7 @@ def create_database():
         ),
 
         ("proteins", "fats", "Compatible",
-         "Combining protein with fats is beneficial because it creates a balanced meal that supports overaal health."
+         "Combining proteins with fats is beneficial because it creates a balanced meal that supports overaal health."
         ),
 
         ("proteins", "dairy", "Avoid",
@@ -172,7 +176,7 @@ def create_database():
         ),
 
         ("proteins", "caffeinated", "Compatible",
-         "Caffeine doesn't prevent or reduce the protein-absorption ability of digestion."
+         "Caffeine doesn't prevent or reduce the protein absorption ability of digestion."
          " However, caffeine will prevent absorbing iron from meat."
         ),
 
@@ -185,7 +189,7 @@ def create_database():
          " by chemically transforming iron into a form that is easier to absorb."
         ),
 
-        ("proteins", "fermented food", "Compatible",
+        ("proteins", "fermented foods", "Compatible",
          "Meat is an abundant source of protein but it takes a lot of time and energy "
          "to break complex peptide bonds. Fermented foods contain natural lactic acid "
          "that helps support the acidic environment of the stomach, stimulating digestive enzymes to work better." 
@@ -223,7 +227,7 @@ def create_database():
          "for weight and metabolism if the source of fat is not controlled."
         ),
 
-        ("starches", "caffeinated", "Compatible"
+        ("starches", "caffeinated", "Compatible",
          "Caffeine slightly increases the metabolic rate and stimulates the"
          " release of energy from glucose. However, consuming too many "
          "fast-digesting carbohydrates (sugar, flour) along with high doses"
@@ -242,7 +246,7 @@ def create_database():
          "Mild acids even reduce the glycemic index of starch."
         ),
 
-        ("starches", "fermented food", "Compatible",
+        ("starches", "fermented foods", "Compatible",
          "Organic acids in fermented foods slow down gastric emptying, "
          "reducing the glycemic load. Lactic acid bacteria also help "
          "the gut break down complex starch bonds more gently."
@@ -302,7 +306,7 @@ def create_database():
          " (GERD) or ulcers, consuming too much acid at once"
          " can irritate the lining."),
 
-        ("fruits", "fermented food", "Compatible",
+        ("fruits", "fermented foods", "Compatible",
          "Soluble fiber in fruits (like pectin) acts as a prebiotic"
          " (food for beneficial bacteria). When combined with "
          "probiotic bacteria in fermented foods, they help the gut microbiome thrive."),
@@ -341,7 +345,7 @@ def create_database():
          "helps convert iron from plants into a more easily absorbed "
          "form for the body."),
 
-        ("vegetables", "fermented food", "Compatible",
+        ("vegetables", "fermented foods", "Compatible",
          "The fiber in vegetables is an excellent source of"
          " nourishment for the beneficial bacteria found in "
          "fermented foods, helping to optimize the digestive system."),
@@ -387,7 +391,7 @@ def create_database():
          "making it easier for lipase enzymes in the small intestine"
          " to break down and digest fat, reducing the feeling of satiety."),
 
-        ("fats", "fermented food", "Compatible",
+        ("fats", "fermented foods", "Compatible",
          "Organic acids and probiotics in fermented foods "
          "help the digestive system process high-fat meals "
          "more gently, reducing bloating."),
@@ -425,7 +429,7 @@ def create_database():
          "easily leading to weight gain and increased risk of "
          "insulin resistance."),
 
-        ("dairy", "fermented food", "Compatible",
+        ("dairy", "fermented foods", "Compatible",
          "Combining these helps supplement a diverse range"
          " of beneficial bacteria strains in the gut and "
          "increases the bioavailability of minerals."),
@@ -437,7 +441,7 @@ def create_database():
          " causing rapid heartbeat, anxiety, insomnia, and"
          " increased blood pressure."),
 
-        ("caffeinated", "fermented food", "Compatible",
+        ("caffeinated", "fermented foods", "Compatible",
          "No negative chemical interactions have been observed"
          " between these two groups. The acids in coffee/tea"
          " and the organic acids in fermented foods do not "
@@ -458,7 +462,7 @@ def create_database():
          "symptoms due to the different congeners in each mixed "
          "type of alcohol."),
 
-        ("alcohol", "fermented food", "Caution",
+        ("alcohol", "fermented foods", "Caution",
          "Both fermented foods and some types of alcohol contain "
          "high levels of biogenic amines. In sensitive individuals"
          " or those lacking the enzyme that breaks down histamine,"
@@ -472,13 +476,13 @@ def create_database():
          " pressure on the liver, accelerating the formation of "
          "fatty liver disease."),
 
-        ("fermented food", "fermented food", "Compaatible",
+        ("fermented foods", "fermented foods", "Compaatible",
         "Combining different fermented foods helps diversify"
         " the beneficial bacteria strains (Lactobacillus, Bifidobacterium,"
         " beneficial yeasts) in the gut, making the"
         " microbiome richer and healthier."),
 
-        ("fermented food", "sugar", "Caution",
+        ("fermented foods", "sugar", "Caution",
          "During processing (such as pickling, making kombucha), "
          "sugar is food for beneficial bacteria to ferment into "
          "organic acids (very good). However, if too much sugar "
@@ -514,18 +518,84 @@ def create_database():
     connection.commit()
     connection.close()
 
+def find_food(food_name):
+    """Search for the food names in the database."""
+    connection = get_db_connection()
+    food = connection.execute(
+        "SELECT * FROM foods WHERE name = ?",
+        (food_name.strip(),)
+    ).fetchone()
+    connection.close()
+    return food
+
+def check_combination(first_food, second_food):
+    """Compare the foods with the rules in the database."""
+    first = find_food(first_food)
+    second = find_food(second_food)
+
+    if first is None or second is None:
+        missing_foods = []
+        if first is None:
+            missing_foods.append(first_food.title())
+        if second is None:
+            missing_foods.append(second_food.title())
+        return {
+            "status": "Unknown food",
+            "message": (
+                f"{','.join(missing_foods)} is not in the PureBite database yet."
+                "We have collected this information. Please try another food."
+            )
+        }
     
+    connection = get_db_connection()
+
+    rule = connection.execute("""
+        SELECT * FROM combination_rules
+        WHERE (group_one = ? AND group_two = ?)
+        OR (group_one = ? AND group_two = ?)
+    """,(
+        first["food_group"],
+        second["food_group"],
+        second["food_group"],
+        first["food_group"]
+    )).fetchone()
+
+    connection.close()
+
+    if rule:
+        return {
+            "status":rule["result"],
+            "message": rule["message"]
+        }
+
+    else: {
+            "status": "No special rule.",
+            "message": (f"We have collected this information. Please try a new combination.")
+    }
+
+    return
+
+
 @app.route('/check', methods=['GET', 'POST'])
 def check():
+    result = None
+    first_food = ''
+    second_food = ''
 
     if request.method == 'POST':
-        stname = request.form.get('stfoodname')
-        ndname = request.form.get('ndfoodname')
-        print(stname, ndname)
-    return render_template('name.html')
+        first_food = request.form.get('stfoodname', '').strip()
+        second_food = request.form.get('ndfoodname', '').strip()
+        print(first_food, second_food)
+    if first_food and second_food:
+        result = check_combination(first_food, second_food)
+    return render_template('name.html',
+                           result= result,
+                           first_food= first_food,
+                           second_food= second_food)
 @app.route('/')
 def home():
     return redirect(url_for('check'))
 
 if __name__ == '__main__':
+    create_database()
     app.run(debug=True)
