@@ -4,6 +4,7 @@
 by using Python (Flask) and React."""
 
 import sqlite3
+import random
 from pathlib import Path 
 from flask import Flask, request, render_template, redirect, url_for
 
@@ -74,7 +75,7 @@ def create_database():
             "cockles", "egg", "tofu", "tempeh", "lentils",
             "chickpeas", "black beans", "soybeans", "peanuts",
             "peanut butter", "almonds", "walnuts",
-            "pistachios", "cashwes", "pumpkin seeds",
+            "pistachios", "cashews", "pumpkin seeds",
             "chia seeds", "flaxseed", "quinoa", "spirulina",
         ], 
 
@@ -110,7 +111,7 @@ def create_database():
             "green beans", "peas", "cabbage", "okra",
             "radish", "turnip", "parsnip", 
             "brussels sprouts", "artichoke", "leek",
-            "ginger", "turmetic"
+            "ginger", "turmeric"
         ], 
 
         "sugar": [
@@ -130,7 +131,7 @@ def create_database():
         ], 
 
         "alcohol": [
-            "beer", "wine", "alcohol,"
+            "beer", "wine", "alcohol",
         ]
     }
     rules = [
@@ -469,14 +470,14 @@ def create_database():
          " this combination can trigger allergic reactions,"
          " facial flushing, headaches, or increased blood pressure."),
 
-        ("alcohol", "sugar", "Avoid0",
+        ("alcohol", "sugar", "Avoid",
          "The sweetness of sugar masks the harshness of alcohol,"
          " causing you to drink more without realizing it. "
          "Sugar and alcohol simultaneously put immense metabolic"
          " pressure on the liver, accelerating the formation of "
          "fatty liver disease."),
 
-        ("fermented foods", "fermented foods", "Compaatible",
+        ("fermented foods", "fermented foods", "Compatible",
         "Combining different fermented foods helps diversify"
         " the beneficial bacteria strains (Lactobacillus, Bifidobacterium,"
         " beneficial yeasts) in the gut, making the"
@@ -528,6 +529,38 @@ def find_food(food_name):
     connection.close()
     return food
 
+def choose_result_image(status):
+    """Choose one random image to show the result."""
+
+    if status == "Unknown food":
+        return "result_image/unknown_food.jpeg"
+    
+    if status == "No special rule.":
+        return "result_image/unknown_food.jpeg"
+    
+    image_folders = {
+        "Compatible": "result_image/compatible",
+        "Caution": "result_image/caution",
+        "Avoid": "result_image/avoid",
+    }
+
+    folder_name = image_folders.get(status)
+    if folder_name is None:
+        return "default.png"
+    
+    image_folder = Path(app.static_folder) / folder_name
+    allowed_extensions = {".png", ".jpg", ".jpeg", ".webp"}
+    images = [
+        image for image in image_folder.iterdir()
+        if image.suffix.lower() in allowed_extensions
+    ]
+
+    if not images:
+        return "default.png"
+    
+    chosen_image = random.choice(images)
+    return f"{folder_name}/{chosen_image.name}"
+
 def check_combination(first_food, second_food):
     """Compare the foods with the rules in the database."""
     first = find_food(first_food)
@@ -542,7 +575,7 @@ def check_combination(first_food, second_food):
         return {
             "status": "Unknown food",
             "message": (
-                f"{','.join(missing_foods)} is not in the PureBite database yet."
+                f"{','.join(missing_foods)} is not in the PureBite database yet. "
                 "We have collected this information. Please try another food."
             )
         }
@@ -568,12 +601,10 @@ def check_combination(first_food, second_food):
             "message": rule["message"]
         }
 
-    else: {
-            "status": "No special rule.",
-            "message": (f"We have collected this information. Please try a new combination.")
+    return {
+        "status": "No special rule.",
+        "message": (f"We have collected this information. Please try a new combination.")
     }
-
-    return
 
 
 @app.route('/check', methods=['GET', 'POST'])
@@ -588,6 +619,7 @@ def check():
         print(first_food, second_food)
     if first_food and second_food:
         result = check_combination(first_food, second_food)
+        result["image"] = choose_result_image(result["status"])
     return render_template('name.html',
                            result= result,
                            first_food= first_food,

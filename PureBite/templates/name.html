@@ -28,15 +28,20 @@
                     <input type="text" name="ndfoodname" required>
                     <br><br>
                     <input type="submit" value="Submit">
-                </form>
-                <img src="{{ url_for('static', filename='default-img-in-the-checker.png') }}" alt="Check This Tool" class="right_side_checker"> 
+                </form> 
                 {% if result %}
-                <div class ="result">
-                    <h2>{{result.status}}</h2>
-                    <p> {{result.message}} </p>
-                </div>    
+                    <img src="{{ url_for('static', filename=result.image) }}"
+                         alt= "Food compatibility result"
+                         class=" right_side_checker">
+                    <div class ="result">
+                        <h2>{{result.status}}</h2>
+                        <p> {{result.message}} </p>
+                    </div> 
+                {% else %}
+                    <img src="{{ url_for('static', filename='default.png') }}"
+                        alt="Check This Tool" class="right_side_checker">    
                 {% endif %}
-            </div>    
+            </div>
         </div>   
     </div>
 </body>
