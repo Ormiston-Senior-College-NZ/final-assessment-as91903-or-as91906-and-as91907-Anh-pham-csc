@@ -10,24 +10,26 @@
 </head>
 <body class="body">
     <header class="header">
-        <h1 class="title" href="name.html">PureBite</h1>
+        <a href = "{{ url_for('home')}}" class="title_link">
+            <h1 class="title">PureBite</h1>
+        </a>
         <div class="gcse-search">
             <script async src="https://cse.google.com/cse.js?cx=91cb9696600824c99"></script>
         </div>
     </header>
     <div class = "container">
-        <form class = "left">
+        <div class = "left">
             <h1>PureBite</h1>
-        <p class="left">Welcome to PureBite! Please enter the names of two foods to find out how similar they are.</p>
-        </form>
+            <p class="left">Welcome to PureBite! Please enter the names of two foods to find out how similar they are.</p>
+        </div>
         <div class="right"> 
             <h2 class ="h2"> Food compatibility checker </h2>
             <div class="checker">
-                <form method="post" class="left_side_checker">
+                <form method="post" class="left_side_checker" action="{{ url_for('checker')}}">
                     <h3>Enter the first food name </h3>
-                    <input type="text" name="stfoodname" required>
+                    <input type="text" name="stfoodname" value="{{ first_food }}" required>
                     <h3>Enter the second food name </h3>
-                    <input type="text" name="ndfoodname" required>
+                    <input type="text" name="ndfoodname" value="{{ second_food }}" required>
                     <br><br>
                     <input type="submit" value="Submit">
                 </form> 

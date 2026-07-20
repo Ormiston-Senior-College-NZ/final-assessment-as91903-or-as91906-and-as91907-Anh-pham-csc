@@ -19,6 +19,14 @@
     margin-left: 60px;
 }
 
+.title_link{
+    text-decoration: none;
+}
+
+.navigation a{
+    text-decoration: none;
+}
+
 /* Restyle the Google search box */ 
 .gsc-control-cse {
     padding: 5px !important;

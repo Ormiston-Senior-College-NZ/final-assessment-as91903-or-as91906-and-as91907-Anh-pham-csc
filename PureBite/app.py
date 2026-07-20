@@ -605,10 +605,10 @@ def check_combination(first_food, second_food):
         "status": "No special rule.",
         "message": (f"We have collected this information. Please try a new combination.")
     }
+    
 
-
-@app.route('/check', methods=['GET', 'POST'])
-def check():
+@app.route('/checker', methods=['GET', 'POST'])
+def checker():
     result = None
     first_food = ''
     second_food = ''
@@ -620,13 +620,26 @@ def check():
     if first_food and second_food:
         result = check_combination(first_food, second_food)
         result["image"] = choose_result_image(result["status"])
-    return render_template('name.html',
+    return render_template('checker.html',
                            result= result,
                            first_food= first_food,
                            second_food= second_food)
+
 @app.route('/')
 def home():
-    return redirect(url_for('check'))
+    return render_template('home.html')
+    
+@app.route('/overall')
+def overall():
+    return render_template('overall.html')
+
+@app.route('/transmission')
+def transmission():
+    return render_template('transmission.html')
+
+@app.route('/prevention')
+def prevention():
+    return render_template('prevention.html')
 
 if __name__ == '__main__':
     create_database()
