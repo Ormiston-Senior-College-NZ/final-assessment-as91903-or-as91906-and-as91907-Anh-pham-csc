@@ -23,8 +23,11 @@
     text-decoration: none;
 }
 
+/* navigation bar*/
 .navigation a{
     text-decoration: none;
+    flood-opacity: 2%;
+    font-size: 30px;
 }
 
 /* Restyle the Google search box */ 

@@ -6,7 +6,7 @@ by using Python (Flask) and React."""
 import sqlite3
 import random
 from pathlib import Path 
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, jsonify, request, render_template, redirect, url_for
 
 app = Flask(__name__)
 DATABASE = Path(__file__).with_name("purebite.db")
@@ -605,6 +605,12 @@ def check_combination(first_food, second_food):
         "status": "No special rule.",
         "message": (f"We have collected this information. Please try a new combination.")
     }
+
+@app.route("/api/check", methods=["POST"])
+def api_check():
+    data = request.get_json(silent=True) or {}
+
+    first_food = data.get("firstFood")
     
 
 @app.route('/checker', methods=['GET', 'POST'])
