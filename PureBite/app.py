@@ -570,8 +570,16 @@ def check_combination(first_food, second_food):
         missing_foods = []
         if first is None:
             missing_foods.append(first_food.title())
+            f1 = open("missing_food.txt", "a")
+            f1.write(first_food + "\n")
+            f1.close()
+
         if second is None:
             missing_foods.append(second_food.title())
+            f1 = open("missing_food.txt", "a")
+            f1.write(second_food + "\n")
+            f1.close()
+
         return {
             "status": "Unknown food",
             "message": (
@@ -579,6 +587,7 @@ def check_combination(first_food, second_food):
                 "We have collected this information. Please try another food."
             )
         }
+
     
     connection = get_db_connection()
 
