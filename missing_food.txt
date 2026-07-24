@@ -5,3 +5,5 @@ Food
 Hi
 Png
 Yay
+Fried Chicken
+Beef Steak

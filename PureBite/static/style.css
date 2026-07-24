@@ -2,10 +2,11 @@
     background-color: #fcffde
 }
 
+
 .header {
     background-color: #fcffde;
     display: grid;
-    grid-template-columns: 2fr 3fr; 
+    grid-template-columns: 1fr 1.5fr; 
     gap: 20px;
 }
 
@@ -27,7 +28,17 @@
 .navigation a{
     text-decoration: none;
     font-size: 30px;
+    margin: 25px;
 }
+
+.nav-bar{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 20px;               
+    width: 100%;
+}
+
 
 /* Restyle the Google search box */ 
 .gsc-control-cse {
@@ -35,7 +46,7 @@
     font-size: 16px !important;
     border: 2px solid #5e9918 !important;
     border-radius: 5px !important;
-    width: 75% !important;
+    width: 85% !important;
     height: 50px !important;
     margin: 20px !important;
 }
@@ -99,6 +110,11 @@
     .right_side_checker {
         width: 70%;
     }
+
+    .nav-bar {
+        font-size: 20;
+        gap: 15px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -117,6 +133,10 @@
     .right_side_checker {
         width:60%;
     }
+
+    .navigation a {
+        font-size: 15;
+    }
 }
 
 @media (max-width: 300px) {
@@ -128,6 +148,9 @@
     }
     .right_side_checker {
         width: 50%;
+    }
+    .navigation a {
+        font-size: 10;
     }
 }
 
@@ -142,6 +165,10 @@
     .right_side_checker {
         width: 50%;
     }
+    .navigation a {
+        font-size: 8;
+    }
+
 }
 
 
