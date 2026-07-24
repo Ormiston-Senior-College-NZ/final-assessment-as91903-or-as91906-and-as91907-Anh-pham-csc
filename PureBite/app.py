@@ -5,6 +5,7 @@ by using Python (Flask) and React."""
 
 import sqlite3
 import random
+import os
 from pathlib import Path 
 from flask import Flask, jsonify, request, render_template, redirect, url_for
 
@@ -561,6 +562,21 @@ def choose_result_image(status):
     chosen_image = random.choice(images)
     return f"{folder_name}/{chosen_image.name}"
 
+def record_missing_food(food_name):
+        file_path = "missing_food.txt"
+        food_clean = food_name.strip().lower()
+        
+        existing_foods = []
+        
+        if os.path.exists(file_path):
+            with open(file_path, "r") as file:
+                existing_foods = [line.strip().lower() for line in file]
+    
+        if food_clean not in existing_foods:
+            with open(file_path, "a") as file:
+                file.write(food_name.strip().title() + "\n")
+            print(f"Recorded")
+
 def check_combination(first_food, second_food):
     """Compare the foods with the rules in the database."""
     first = find_food(first_food)
@@ -570,15 +586,11 @@ def check_combination(first_food, second_food):
         missing_foods = []
         if first is None:
             missing_foods.append(first_food.title())
-            f1 = open("missing_food.txt", "a")
-            f1.write(first_food + "\n")
-            f1.close()
+            record_missing_food(first_food)
 
         if second is None:
             missing_foods.append(second_food.title())
-            f1 = open("missing_food.txt", "a")
-            f1.write(second_food + "\n")
-            f1.close()
+            record_missing_food(second_food)
 
         return {
             "status": "Unknown food",
@@ -587,6 +599,7 @@ def check_combination(first_food, second_food):
                 "We have collected this information. Please try another food."
             )
         }
+    
 
     
     connection = get_db_connection()
@@ -614,6 +627,7 @@ def check_combination(first_food, second_food):
         "status": "No special rule.",
         "message": (f"We have collected this information. Please try a new combination.")
     }
+
 
 @app.route("/api/check", methods=["POST"])
 def api_check():
