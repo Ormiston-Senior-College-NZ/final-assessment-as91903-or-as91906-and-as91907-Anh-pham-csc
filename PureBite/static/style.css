@@ -79,7 +79,7 @@
 
 .right {
     font-family: Arial, sans-serif;
-    background-color: #5e9918;
+    background-color: #598f18;
     padding: 20px;
     border-radius: 5px;
     border: solid 1px black;
@@ -93,9 +93,11 @@
 }
 
 .left_side_checker {
-    padding-top: 0px;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     padding:20px;
-    background-color: aquamarine;
 }
 
 .right_side_checker {
@@ -103,7 +105,6 @@
     padding: 20px;
     margin-right: 20px;
     width: 90%;
-    background-color: blue;
 }
     
 .left{
@@ -128,6 +129,15 @@
     font-size: 20px;
 }
 
+.left_side_checker h3{
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.left_side_checker h3:nth-of-type(2){
+    margin-top: 15px;
+}
+
 .guidance_title {
     font-family: "Nunito", sans-serif ;
     font-size: 30px;
@@ -138,17 +148,16 @@
 .input_food{
     width: 300px;              
     height: 40px;             
-    
     display: inline-flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;    
-    
     background-color: #f8f7da;             
-    font-size: 15px;    
-    
+    font-size: 15px;
     border: none;
-    border-radius: 50px;   
+    border-radius: 50px; 
+    text-align: center;  
+    font-family: "Nunito", sans-serif;
 }
 
 .result_message{
