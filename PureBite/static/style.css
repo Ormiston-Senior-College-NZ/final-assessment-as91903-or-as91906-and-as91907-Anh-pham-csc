@@ -93,16 +93,17 @@
 }
 
 .left_side_checker {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 20px;
+    padding-top: 0px;
+    padding:20px;
+    background-color: aquamarine;
 }
 
 .right_side_checker {
     height: auto;
     padding: 20px;
     margin-right: 20px;
-    width: 90%
+    width: 90%;
+    background-color: blue;
 }
     
 .left{
@@ -121,11 +122,33 @@
 
 }
 
+.h3{
+    font-family: "Cormorant Garamond", serif;
+    color: white;
+    font-size: 20px;
+}
+
 .guidance_title {
     font-family: "Nunito", sans-serif ;
     font-size: 30px;
     color: #467010;
     font-weight: bold; 
+}
+
+.input_food{
+    width: 300px;              
+    height: 40px;             
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;    
+    
+    background-color: #f8f7da;             
+    font-size: 15px;    
+    
+    border: none;
+    border-radius: 50px;   
 }
 
 .result_message{
@@ -143,6 +166,53 @@
     font-size: 20px;
     font-family: "Nunito", sans-serif;
 }
+
+.btn_group{
+    display: flex;             
+    justify-content: center;   
+    gap: 20px;
+}
+
+.btn_submit,
+.btn_clear {
+    width: 120px;              
+    height: 30px;             
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;    
+    
+    background-color: #f8f7da; 
+    color: #468c37;            
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    
+    
+    border: none;
+    border-radius: 50px;   
+    
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s ease, background-color 0.15s ease;
+}
+
+.btn-submit:hover,
+.btn-clear:hover {
+    background-color: #fef9c3;
+    transform: translateY(-1px);
+}
+
+.btn-submit:active,
+.btn-clear:active {
+    transform: translateY(0);
+}
+
+
 
 
 @media (max-width: 900px) {

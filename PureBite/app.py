@@ -601,7 +601,6 @@ def check_combination(first_food, second_food):
         }
     
 
-    
     connection = get_db_connection()
 
     rule = connection.execute("""
@@ -653,6 +652,7 @@ def checker():
                            result= result,
                            first_food= first_food,
                            second_food= second_food)
+
 
 @app.route('/')
 def home():

@@ -43,14 +43,16 @@
             <h2 class ="h2"> Food compatibility checker </h2>
             <div class="checker">
                 <form method="post" class="left_side_checker" action="{{ url_for('checker')}}">
-                    <h3>Enter the first food name </h3>
-                    <input type="text" name="stfoodname" value="{{ first_food }}" required>
-                    <h3>Enter the second food name </h3>
-                    <input type="text" name="ndfoodname" value="{{ second_food }}" required>
+                    <h3 class="h3">Enter the first food name </h3>
+                    <input type="text" name="stfoodname" class="input_food"  value="{{ first_food }}" required>
+                    <h3 class="h3">Enter the second food name </h3>
+                    <input type="text" name="ndfoodname" class="input_food" value="{{ second_food }}" required>
                     <br><br>
-                    <input type="submit" value="Submit">
-                    <input type="button" value="Clear" class="btn-clear" onclick="clearResults()">
-                </form>  
+                    <div class="btn_group">
+                        <input type="submit" value="Submit" class="btn_submit">
+                        <a href="{{ url_for('checker') }}" class="btn_clear">Clear</a>
+                    </div>
+                </form>
                 {% if result %}
                     <img src="{{ url_for('static', filename=result.image) }}"
                          alt= "Food compatibility result"
