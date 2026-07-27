@@ -6,9 +6,11 @@
 .header {
     background-color: #fcffde;
     display: grid;
-    grid-template-columns: 1fr 1.5fr; 
+    grid-template-columns: 2fr 3fr; 
     gap: 20px;
+    padding-bottom: 5px;
 }
+
 
 /* Brand's name*/
 .title {
@@ -24,11 +26,19 @@
     text-decoration: none;
 }
 
-/* navigation bar*/
+
+/* Navigation bar*/
 .navigation a{
     text-decoration: none;
-    font-size: 30px;
+    font-size: 28px;
     margin: 25px;
+    color: #f8f7da;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.navigation{
+    background-color:#467010;
+    padding: 15px;
 }
 
 .nav-bar{
@@ -51,19 +61,20 @@
     margin: 20px !important;
 }
 
-/* Style the input field */
 .gsc-input-box, .gsc-input {
     border: none !important;
     background-color: transparent !important;
     font-size: 20px !important;
 }
 
+/* Checker's body*/ 
 .container{
     display: grid;
     grid-template-columns: 2fr 3fr; 
     gap: 20px;
     height: auto;
     padding: 20px;
+    margin-top: 30px;
 }
 
 .right {
@@ -71,6 +82,7 @@
     background-color: #5e9918;
     padding: 20px;
     border-radius: 5px;
+    border: solid 1px black;
 }
 
 .checker {
@@ -101,6 +113,13 @@
     font-family: "Cormorant Garamond", serif;
 }
 
+.guidance_title {
+    font-family: "Nunito", sans-serif ;
+    font-size: 30px;
+    color: #467010;
+    font-weight: bold; 
+}
+
 
 @media (max-width: 900px) {
     .container {
@@ -109,11 +128,6 @@
     }
     .right_side_checker {
         width: 70%;
-    }
-
-    .nav-bar {
-        font-size: 20;
-        gap: 15px;
     }
 }
 
@@ -134,9 +148,6 @@
         width:60%;
     }
 
-    .navigation a {
-        font-size: 15;
-    }
 }
 
 @media (max-width: 300px) {
@@ -148,9 +159,6 @@
     }
     .right_side_checker {
         width: 50%;
-    }
-    .navigation a {
-        font-size: 10;
     }
 }
 
@@ -166,7 +174,8 @@
         width: 50%;
     }
     .navigation a {
-        font-size: 8;
+        font-size: 28px;
+        gap: 20px;
     }
 
 }
@@ -187,6 +196,6 @@
 
 /* Cherry Bomb One: Brand name
 Cormorant Garamond: Navigation bar, all information on the web page (normal, 25, black), in the contact part (normal, 40-23-20, black/white), in the checker (normal, heading 30, information 20, white);  copyright (normal, 30, white), headings (boldl, 25, #5e9918) 
-Glacial Indifference: welcome sentence (bold, size 30, #5e9918), report’s links (italic, 24, #467010), explanation (normal, 21, white)
+Nunito: welcome sentence (bold, size 30, #5e9918), report’s links (italic, 24, #467010), explanation (normal, 21, white)
 Public Sans: Send/check buttons (bold, 15, #468c37)
 Merienda: Encourage sentence (normal, 20, black)

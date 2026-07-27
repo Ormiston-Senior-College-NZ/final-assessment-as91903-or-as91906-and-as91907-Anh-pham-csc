@@ -1,9 +1,3 @@
-
-Shoe
-Ant
 Food
-Hi
-Png
-Yay
-Fried Chicken
-Beef Steak
+Name
+Ant
