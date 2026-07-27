@@ -111,6 +111,14 @@
 
 .h2{
     font-family: "Cormorant Garamond", serif;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 20px;               
+    width: 100%;
+    color: white;
+    font-size: 30px;
+
 }
 
 .guidance_title {
@@ -118,6 +126,22 @@
     font-size: 30px;
     color: #467010;
     font-weight: bold; 
+}
+
+.result_message{
+    font-family: "Nunito", sans-serif;
+    display: flex;
+    justify-content: center; 
+    align-items: center;              
+    width: 100%;
+    color: white;
+    font-size: 20px;
+}
+
+.result_status{
+    color: white;
+    font-size: 20px;
+    font-family: "Nunito", sans-serif;
 }
 
 

@@ -33,6 +33,7 @@
         </div>
 
     </header>
+
     <div class = "container">
         <div class = "left">
             <h1 class="guidance_title">Guidance on how to use our food compatibility checking tool </h1>
@@ -48,20 +49,21 @@
                     <input type="text" name="ndfoodname" value="{{ second_food }}" required>
                     <br><br>
                     <input type="submit" value="Submit">
-                </form> 
+                    x
+                </form>  
                 {% if result %}
                     <img src="{{ url_for('static', filename=result.image) }}"
                          alt= "Food compatibility result"
                          class=" right_side_checker">
-                    <div class ="result">
-                        <h2>{{result.status}}</h2>
-                        <p> {{result.message}} </p>
-                    </div> 
                 {% else %}
                     <img src="{{ url_for('static', filename='default.png') }}"
                         alt="Check This Tool" class="right_side_checker">    
                 {% endif %}
             </div>
+                <div>
+                <h2 class = "result_status">{{result.status}}</h2>
+                <p class = "result_message"> {{result.message}} </p>
+            </div> 
         </div>   
     </div>
 </body>
