@@ -24,10 +24,10 @@
 
         <div>
             <nav class="navigation">
-                <a href = "{{ url_for('home')}}" class="navigation{% if request.endpoint == 'home' %}active{% endif %}"> Home </a>
-                <a href = "{{ url_for('overall')}}"> Overall information </a>
-                <a href = "{{ url_for('transmission')}}"> Transmission routes </a>
-                <a href = "{{ url_for('prevention')}}"> Prevention tips </a>
+                <a href = "{{ url_for('home')}}" class="{% if request.endpoint == 'home' %}active{% endif %}"> Home </a>
+                <a href = "{{ url_for('overall')}}" class="{% if request.endpoint == 'overall' %}active{% endif %}"> Overall information </a>
+                <a href = "{{ url_for('transmission')}}" class="{% if request.endpoint == 'transmission' %}active{% endif %}"> Transmission routes </a>
+                <a href = "{{ url_for('prevention')}}" class="{% if request.endpoint == 'prevention' %}active{% endif %}"> Prevention tips </a>
                 <a href = "{{ url_for('checker')}}" class="{% if request.endpoint == 'checker' %}active{% endif %}"> Compatible checker </a>
             </nav>
         </div>

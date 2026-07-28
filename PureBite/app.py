@@ -56,7 +56,7 @@ def create_database():
 
         "acidic": [
             "orange", "lemon", "lime", "grapefruit",
-            "apple", "passionfruit", "cranberry",
+            "apple", "passionfruit", "cranberry", "juice",
         ],
 
         "fruits": [
@@ -538,6 +538,9 @@ def choose_result_image(status):
     
     if status == "No special rule.":
         return "result_image/unknown_food.jpeg"
+
+    if status == "Same food":
+        return "result_image/same.jpeg"
     
     image_folders = {
         "Compatible": "result_image/compatible",
@@ -598,6 +601,11 @@ def check_combination(first_food, second_food):
                 f"{','.join(missing_foods)} is not in the PureBite database yet. "
                 "We have collected this information. Please try another food."
             )
+        }
+    if first_food == second_food:
+        return {
+            "status": "Same food",
+            "message": "They are the same ingredent so they are good to combine. Remember just don't eat too much of them."
         }
     
 
