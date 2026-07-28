@@ -24,11 +24,11 @@
 
         <div>
             <nav class="navigation">
-                <a href = "{{ url_for('home')}}"> Home </a>
+                <a href = "{{ url_for('home')}}" class="navigation{% if request.endpoint == 'home' %}active{% endif %}"> Home </a>
                 <a href = "{{ url_for('overall')}}"> Overall information </a>
                 <a href = "{{ url_for('transmission')}}"> Transmission routes </a>
                 <a href = "{{ url_for('prevention')}}"> Prevention tips </a>
-                <a href = "{{ url_for('checker')}}"> Compatible checker </a>
+                <a href = "{{ url_for('checker')}}" class="{% if request.endpoint == 'checker' %}active{% endif %}"> Compatible checker </a>
             </nav>
         </div>
 

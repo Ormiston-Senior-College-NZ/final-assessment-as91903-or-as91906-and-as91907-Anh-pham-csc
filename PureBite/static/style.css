@@ -31,7 +31,7 @@
 .navigation a{
     text-decoration: none;
     font-size: 28px;
-    margin: 25px;
+    margin: 20px;
     color: #f8f7da;
     font-family: "Cormorant Garamond", serif;
 }
@@ -45,7 +45,7 @@
     display: flex;
     justify-content: center; 
     align-items: center;
-    gap: 20px;               
+    gap: 15px;               
     width: 100%;
 }
 
@@ -67,6 +67,15 @@
     font-size: 20px !important;
 }
 
+.navigation a:hover{
+    font-weight: bold;
+}
+
+.navigation a.active {
+    font-weight:bold;
+    cursor: pointer;
+    text-decoration: underline;
+} 
 /* Checker's body*/ 
 .container{
     display: grid;
