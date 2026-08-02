@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> PureBite - Food poisoning information and food combination checking tool </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Merienda:wght@300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+    <header>
+        
+        <div class="header">
+            <a href = "{{ url_for('home')}}" class="title_link">
+                <h1 class="title">PureBite</h1>
+            </a>
+
+            <div class="gcse-search">
+                <script async src="https://cse.google.com/cse.js?cx=91cb9696600824c99"></script>
+            </div>
+        </div>
+
+        <div>
+            <nav class="navigation">
+                <a href = "{{ url_for('home')}}"> Home </a>
+                <a href = "{{ url_for('overall')}}"> Overall information </a>
+                <a href = "{{ url_for('transmission')}}" class="{% if request.endpoint == 'transmission' %}active{% endif %}"> Transmission routes </a>
+                <a href = "{{ url_for('prevention')}}"> Prevention tips </a>
+                <a href = "{{ url_for('checker')}}"> Compatible checker </a>
+            </nav>
+        </div>
+
+    </header>
+</body>
+</html>
