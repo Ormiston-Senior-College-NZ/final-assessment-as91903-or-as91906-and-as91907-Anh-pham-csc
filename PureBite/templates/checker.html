@@ -70,45 +70,50 @@
     </div>
 
     <footer class="contact-footer">
-    <section class="contact-section">
-        <h2>Contact</h2>
+        <section class="contact-section">
+            <h2>Contact</h2>
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% for category, message in messages %}
-                <p class="contact-message {{ category }}">{{ message }}</p>
-            {% endfor %}
-        {% endwith %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <p class="contact-message {{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endwith %}
 
-        <form method="post" action="{{ url_for('contact') }}" class="contact-form">
-            <label for="customer_name">Name</label>
-            <input
-                id="customer_name"
-                name="customer_name"
-                type="text"
-                placeholder="Your first and last name"
-                required
-            >
+            <form method="post" action="{{ url_for('contact') }}" class="contact-form">
+                <label for="customer_name">Name</label>
+                <input
+                    id="customer_name"
+                    name="customer_name"
+                    type="text"
+                    placeholder="Your first and last name"
+                    required
+                >
 
-            <label for="customer_email">Email</label>
-            <input
-                id="customer_email"
-                name="customer_email"
-                type="email"
-                placeholder="Your email"
-                required
-            >
+                <label for="customer_email">Email</label>
+                <input
+                    id="customer_email"
+                    name="customer_email"
+                    type="email"
+                    placeholder="Your email"
+                    required
+                >
 
-            <label for="customer_message">Messages</label>
-            <textarea
-                id="customer_message"
-                name="customer_message"
-                placeholder="Your messages"
-                required
-            ></textarea>
+                <label for="customer_message">Messages</label>
+                <textarea
+                    id="customer_message"
+                    name="customer_message"
+                    placeholder="Your messages"
+                    required
+                ></textarea>
 
-            <button type="submit">SEND</button>
-        </form>
-    </section>
+                <button type="submit">SEND</button>
+            </form>
+        </section>
+
+        <section class="privacy">
+            <h2> Copyright </h2>
+        </section>
+
     </footer>
 </body>
 </html>

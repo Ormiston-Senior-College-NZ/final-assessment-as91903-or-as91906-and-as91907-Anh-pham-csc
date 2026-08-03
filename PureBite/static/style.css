@@ -319,13 +319,16 @@
     margin-top: 60px;
     padding: 24px 20px;
     background-color: #467010;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }
 
 .contact-section {
-    max-width: 490px;
     margin: auto;
     color: white;
     font-family: "Public Sans", sans-serif;
+    background-color: #7b1f1f;
+    display: grid;
 }
 
 .contact-section h2 {
@@ -350,22 +353,24 @@
 
 .contact-form input,
 .contact-form textarea {
-    width: 100%;
+    width: 700px;
     padding: 8px 14px;
     border: 0;
     border-radius: 20px;
     font: inherit;
     box-sizing: border-box;
+    
 }
 
 .contact-form textarea {
     min-height: 70px;
     resize: vertical;
     border-radius: 14px;
+    width: 500px;
 }
 
 .contact-form button {
-    width: 180px;
+    width: 700px;
     margin: 10px auto 0;
     padding: 8px;
     border: 0;
@@ -389,6 +394,12 @@
 .contact-message.error {
     background-color: #ffe0e0;
     color: #7b1f1f;
+}
+
+.privacy{
+    background-color: #fef9c3;
+    display: grid;
+    margin: 30px
 }
 
 
