@@ -731,6 +731,18 @@ def contact():
 
     return redirect(request.referrer or url_for("home"))
 
+@app.route('/copyright')
+def copyright():
+    return render_template('copyright.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/disclaimer')
+def disclaimer():
+    return render_template('disclaimer.html')
+
 if __name__ == '__main__':
     create_database()
     app.run(debug=True)
