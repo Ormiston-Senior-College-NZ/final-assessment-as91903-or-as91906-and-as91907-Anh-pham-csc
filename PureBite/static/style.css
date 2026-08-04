@@ -317,7 +317,7 @@
 /* Footer */
 .contact-footer {
     margin-top: 60px;
-    padding: 0px 0px;
+    padding: 10px 10px;
     background-color: #467010;
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -397,7 +397,8 @@
 
 .right-side-footer{
     display: grid;
-    margin:70px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .in4-in-footer{
