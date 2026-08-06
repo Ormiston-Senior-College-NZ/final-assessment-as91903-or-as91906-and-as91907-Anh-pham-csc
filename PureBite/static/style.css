@@ -220,17 +220,17 @@
     transition: transform 0.1s ease, background-color 0.15s ease;
 }
 
-.btn-submit:hover,
-.btn-clear:hover {
-    background-color: #fef9c3;
+.btn_submit:hover,
+.btn_clear:hover {
+    background-color: #85ce32;
+    color: #fcffde;
     transform: translateY(-1px);
 }
 
-.btn-submit:active,
-.btn-clear:active {
+.btn_submit:active,
+.btn_clear:active {
     transform: translateY(0);
 }
-
 
 
 
@@ -242,12 +242,23 @@
     .right_side_checker {
         width: 70%;
     }
-
     .btn_group{
     display: flex;             
     justify-content: center;   
     gap: 20px;
-}
+    }
+
+    .contact-footer lable{
+        font-size: 10px;
+    }
+    .contact-form input,
+    .contact-form textarea{
+        width: 70px;
+    }
+    .contact-section{
+        background-color: blue;
+    }
+
 }
 
 @media (max-width: 600px) {
@@ -271,6 +282,13 @@
     justify-content: center;   
     gap: 20px;
     }
+    .contact-section{
+        background-color: rgb(79, 194, 165);
+    }
+    .contact-form input,
+    .contact-form textarea{
+        width: 50px;
+    }
 
 }
 
@@ -288,6 +306,13 @@
     display: flex;             
     justify-content: center;   
     gap: 20px;
+    }
+    .contact-section{
+        background-color: rgb(148, 40, 112);
+    }
+    .contact-form input,
+    .contact-form textarea{
+        width: 20px;
     }
 }
 
@@ -310,6 +335,11 @@
     display: flex;             
     justify-content: center;   
     gap: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+        width: 20px;
     }
 
 }
@@ -379,6 +409,12 @@
     font-weight: bold;
 }
 
+.contact-form button:hover{
+    background-color: #85ce32;
+    color: #fcffde;
+    transform: translateY(-1px);
+}
+
 .contact-message {
     padding: 10px;
     border-radius: 8px;
@@ -408,6 +444,11 @@
     text-decoration: none;
     margin-top: 20px;
     margin-left: 50px;
+}
+
+.in4-in-footer:hover{
+    transform: translateY(-1px);
+    font-weight: bold;
 }
 
 .title-bottom{

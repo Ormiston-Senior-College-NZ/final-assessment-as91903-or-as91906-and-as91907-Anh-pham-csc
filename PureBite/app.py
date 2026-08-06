@@ -8,6 +8,8 @@ import random
 import os
 import smtplib
 import ssl
+import requests
+os.environ["ABSTRACT_API_KEY"] = "f87accf569f34880b0465b6f1578ce07"
 from email.message import EmailMessage
 from pathlib import Path 
 from flask import Flask, flash, jsonify, request, render_template, redirect, url_for
@@ -643,6 +645,23 @@ def check_combination(first_food, second_food):
     }
 
 
+def is_real_email(email_address):
+    api_key = os.environ.get("ABSTRACT_API_KEY")
+    if not api_key:
+        return True
+
+    url="https://emailvalidation.abstractapi.com/v1/?api_key={api_key}&email={email_address}"
+
+    try:
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            return data.get("deliverability") == "DELIVERABLE"
+        return True
+    except Exception:
+        return
+
+
 @app.route("/api/check", methods=["POST"])
 def api_check():
     data = request.get_json(silent=True) or {}
@@ -691,6 +710,11 @@ def contact():
     customer_email = request.form.get("customer_email", "").strip()
     customer_message = request.form.get("customer_message", "").strip()
 
+    if not is_real_email(customer_email):
+        flash("The email address you entered does not exist or cannot receive mail. Please check for typos!"
+              "error")
+        return redirect(url_for('contact'))
+
     if not customer_name or not customer_email or not customer_message:
         flash("Please complete every contact field.", "error")
         return redirect(request.referrer or url_for("home"))
@@ -730,6 +754,8 @@ def contact():
         flash("Sorry, your message could not be sent. Please try again later.", "error")
 
     return redirect(request.referrer or url_for("home"))
+
+
 
 @app.route('/copyright')
 def copyright():
