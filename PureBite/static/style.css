@@ -248,15 +248,26 @@
     gap: 20px;
     }
 
-    .contact-footer lable{
+    .contact-footer label{
         font-size: 10px;
     }
     .contact-form input,
     .contact-form textarea{
         width: 70px;
     }
+    .contact-form textarea {
+        width: 70px;
+        min-height: 50px;
+    }
     .contact-section{
         background-color: blue;
+    }
+    .right-side-footer{
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    .in4-in-footer{
+        margin-left: 30px;
     }
 
 }

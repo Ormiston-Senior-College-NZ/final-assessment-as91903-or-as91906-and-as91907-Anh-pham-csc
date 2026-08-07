@@ -9,10 +9,11 @@ import os
 import smtplib
 import ssl
 import requests
-os.environ["ABSTRACT_API_KEY"] = "f87accf569f34880b0465b6f1578ce07"
 from email.message import EmailMessage
 from pathlib import Path 
 from flask import Flask, flash, jsonify, request, render_template, redirect, url_for
+
+os.environ["ABSTRACT_API_KEY"] = "f87accf569f34880b0465b6f1578ce07"
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get(
@@ -645,23 +646,6 @@ def check_combination(first_food, second_food):
     }
 
 
-def is_real_email(email_address):
-    api_key = os.environ.get("ABSTRACT_API_KEY")
-    if not api_key:
-        return True
-
-    url="https://emailvalidation.abstractapi.com/v1/?api_key={api_key}&email={email_address}"
-
-    try:
-        response = requests.get(url, timeout=5)
-        if response.status_code == 200:
-            data = response.json()
-            return data.get("deliverability") == "DELIVERABLE"
-        return True
-    except Exception:
-        return
-
-
 @app.route("/api/check", methods=["POST"])
 def api_check():
     data = request.get_json(silent=True) or {}
@@ -705,6 +689,22 @@ def prevention():
     return render_template('prevention.html')
 
 @app.route("/contact", methods=["POST"])
+def is_real_email(email_address):
+    api_key = os.environ.get("ABSTRACT_API_KEY")
+    if not api_key:
+        return True
+
+    url="https://emailvalidation.abstractapi.com/v1/?api_key={api_key}&email={email_address}"
+
+    try:
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            return data.get("deliverability") == "DELIVERABLE"
+        return True
+    except Exception:
+        return
+
 def contact():
     customer_name = request.form.get("customer_name", "").strip()
     customer_email = request.form.get("customer_email", "").strip()
@@ -754,7 +754,6 @@ def contact():
         flash("Sorry, your message could not be sent. Please try again later.", "error")
 
     return redirect(request.referrer or url_for("home"))
-
 
 
 @app.route('/copyright')
