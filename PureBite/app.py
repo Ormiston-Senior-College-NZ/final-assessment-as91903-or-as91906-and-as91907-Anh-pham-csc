@@ -25,7 +25,6 @@ DATABASE = Path(__file__).with_name("purebite.db")
 
 def get_db_connection():
     """Connect the database with the python file"""
-
     connection = sqlite3.connect(DATABASE)
     connection.row_factory = sqlite3.Row
     return connection 
@@ -33,7 +32,6 @@ def get_db_connection():
 
 def create_database():
     """Create a data base for the food compatibility checker"""
-
     connection = get_db_connection()
     cursor = connection.cursor()
 
@@ -542,13 +540,9 @@ def find_food(food_name):
 
 def choose_result_image(status):
     """Choose one random image to show the result."""
-
-    if status == "Unknown food":
+    if status in ("Unknown food", "No special rule."):
         return "result_image/unknown_food.jpeg"
     
-    if status == "No special rule.":
-        return "result_image/unknown_food.jpeg"
-
     if status == "Same food":
         return "result_image/same.jpeg"
     
@@ -646,12 +640,38 @@ def check_combination(first_food, second_food):
     }
 
 
-@app.route("/api/check", methods=["POST"])
-def api_check():
-    data = request.get_json(silent=True) or {}
+def is_real_email(email_address):
+    api_key = os.environ.get("ABSTRACT_API_KEY")
+    if not api_key:
+        return True
 
-    first_food = data.get("firstFood")
+    url= f"https://emailvalidation.abstractapi.com/v1/?api_key={api_key}&email={email_address}"
+
+    try:
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            return data.get("deliverability") == "DELIVERABLE"
+        return True
+    except Exception:
+        return
+
+
+@app.route('/')
+def home():
+    return render_template('home.html')
     
+@app.route('/overall')
+def overall():
+    return render_template('overall.html')
+
+@app.route('/transmission')
+def transmission():
+    return render_template('transmission.html')
+
+@app.route('/prevention')
+def prevention():
+    return render_template('prevention.html')
 
 @app.route('/checker', methods=['GET', 'POST'])
 def checker():
@@ -671,47 +691,28 @@ def checker():
                            first_food= first_food,
                            second_food= second_food)
 
+@app.route("/api/check", methods=["POST"])
+def api_check():
+    data = request.get_json(silent=True) or {}
+    first_food = data.get("firstFood")
+    second_food = data.get("secondFood", "").strip()
 
-@app.route('/')
-def home():
-    return render_template('home.html')
+    if not first_food or not second_food:
+        return jsonify({"error": "Please provide both firstFood and secondFood"}), 400
+
+    result = check_combination(first_food, second_food)
+    result["image"] = choose_result_image(result["status"])
+    return jsonify(result)
     
-@app.route('/overall')
-def overall():
-    return render_template('overall.html')
-
-@app.route('/transmission')
-def transmission():
-    return render_template('transmission.html')
-
-@app.route('/prevention')
-def prevention():
-    return render_template('prevention.html')
 
 @app.route("/contact", methods=["POST"])
-def is_real_email(email_address):
-    api_key = os.environ.get("ABSTRACT_API_KEY")
-    if not api_key:
-        return True
-
-    url="https://emailvalidation.abstractapi.com/v1/?api_key={api_key}&email={email_address}"
-
-    try:
-        response = requests.get(url, timeout=5)
-        if response.status_code == 200:
-            data = response.json()
-            return data.get("deliverability") == "DELIVERABLE"
-        return True
-    except Exception:
-        return
-
 def contact():
     customer_name = request.form.get("customer_name", "").strip()
     customer_email = request.form.get("customer_email", "").strip()
     customer_message = request.form.get("customer_message", "").strip()
 
     if not is_real_email(customer_email):
-        flash("The email address you entered does not exist or cannot receive mail. Please check for typos!"
+        flash("The email address you entered does not exist or cannot receive mail. Please check for typos!",
               "error")
         return redirect(url_for('contact'))
 
