@@ -33,5 +33,58 @@
         </div>
 
     </header>
+    <footer class="contact-footer">
+        <section class="contact-section">
+            <h2>Contact</h2>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <p class="contact-message {{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endwith %}
+
+            <form method="post" action="{{ url_for('contact') }}" class="contact-form">
+                <label for="customer_name">Name</label>
+                <input
+                    id="customer_name"
+                    name="customer_name"
+                    type="text"
+                    placeholder="Your first and last name"
+                    required
+                >
+
+                <label for="customer_email">Email</label>
+                <input
+                    id="customer_email"
+                    name="customer_email"
+                    type="email"
+                    placeholder="Your email"
+                    required
+                >
+
+                <label for="customer_message">Messages</label>
+                <textarea
+                    id="customer_message"
+                    name="customer_message"
+                    placeholder="Your messages"
+                    required
+                ></textarea>
+
+                <button type="submit">SEND</button>
+            </form>
+        </section>
+
+        <section class="right-side-footer">
+            <a href = "{{ url_for('copyright')}}" class="in4-in-footer"> Copyright </a>
+            <a href = "{{ url_for('privacy')}}" class="in4-in-footer"> Privacy </a>
+            <a href = "{{ url_for('disclaimer')}}" class="in4-in-footer"> Disclaimer </a>
+                
+            <a href = "{{ url_for('home')}}" class="title_link">
+                <h1 class="title-bottom">PureBite</h1>
+            </a>
+
+        </section>
+
+    </footer>
 </body>
 </html>

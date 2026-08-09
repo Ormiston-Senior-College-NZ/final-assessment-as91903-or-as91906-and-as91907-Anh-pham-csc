@@ -26,6 +26,11 @@
     text-decoration: none;
 }
 
+.title:hover{
+    transform: translateY(-1px);
+    color:#2d741c;
+}
+
 
 /* Navigation bar*/
 .navigation a{
@@ -264,9 +269,6 @@
         min-height: 50px;
         
     }
-    .contact-section{
-        background-color: rgb(75, 180, 71);
-    }
     .right-side-footer{
         margin-left: 15px !important;
         margin-right: 15px !important;
@@ -302,7 +304,6 @@
     gap: 20px;
     }
     .contact-section{
-        background-color: rgb(79, 194, 165);
         margin-left: 10px;
     }
 
@@ -351,7 +352,6 @@
         height: auto;
     }
     .contact-section{
-        background-color: rgb(148, 40, 112);
         margin-left: 10px;
     }
 
@@ -521,6 +521,10 @@
     font-family: 'Cherry Bomb One', cursive;
 }
 
+.title-bottom:hover{
+    transform: translateY(-1px);
+    color:#85ce32
+}
 
 
 
