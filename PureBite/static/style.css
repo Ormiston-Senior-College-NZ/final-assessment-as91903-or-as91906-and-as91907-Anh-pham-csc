@@ -256,8 +256,9 @@
         width: 70px;
     }
     .contact-form textarea {
-        width: 70px;
+        max-width: 200px;
         min-height: 50px;
+        
     }
     .contact-section{
         background-color: blue;
