@@ -642,19 +642,26 @@ def check_combination(first_food, second_food):
 
 def is_real_email(email_address):
     api_key = os.environ.get("ABSTRACT_API_KEY")
-    if not api_key:
+    if not api_key or not email_address:
         return True
 
-    url= f"https://emailvalidation.abstractapi.com/v1/?api_key={api_key}&email={email_address}"
+    url= f"https://emailreputation.abstractapi.com/v1/?api_key={api_key}&email={email_address}"
 
     try:
         response = requests.get(url, timeout=5)
         if response.status_code == 200:
             data = response.json()
-            return data.get("deliverability") == "DELIVERABLE"
+
+            email_status = data.get("email_deliverability", {}).get("status") or data.get("deliverability")
+            is_valid_format = data.get("is_valid_format", {}).get("value") or data.get("is_valid_format")
+
+            if email_status:
+                return email_status.upper() == "DELIVERABLE"
+            return bool(is_valid_format)    
         return True
-    except Exception:
-        return
+    except Exception as e:
+        print("API Error:", e)
+        return True
 
 
 @app.route('/')
@@ -708,17 +715,17 @@ def api_check():
 @app.route("/contact", methods=["POST"])
 def contact():
     customer_name = request.form.get("customer_name", "").strip()
-    customer_email = request.form.get("customer_email", "").strip()
+    customer_email = request.form.get("customer_email", "") or request.form.get("email", "").strip()
     customer_message = request.form.get("customer_message", "").strip()
-
-    if not is_real_email(customer_email):
-        flash("The email address you entered does not exist or cannot receive mail. Please check for typos!",
-              "error")
-        return redirect(url_for('contact'))
 
     if not customer_name or not customer_email or not customer_message:
         flash("Please complete every contact field.", "error")
         return redirect(request.referrer or url_for("home"))
+
+    if not is_real_email(customer_email):
+        flash("The email address you entered does not exist or cannot receive mail. Please check for typos!",
+               "error")
+        return redirect(request.referrer or url_for('contact'))
 
     sender_email = os.environ.get("PUREBITE_SENDER_EMAIL")
     sender_password = os.environ.get("PUREBITE_SMTP_PASSWORD")
