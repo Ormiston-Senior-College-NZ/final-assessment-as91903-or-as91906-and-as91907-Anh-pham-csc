@@ -248,27 +248,34 @@
     gap: 20px;
     }
 
+    .contact-section{
+        margin-left: 20px;
+    }
+
     .contact-footer label{
         font-size: 10px;
     }
     .contact-form input,
     .contact-form textarea{
-        width: 70px;
+        max-width: 400px;
     }
     .contact-form textarea {
-        max-width: 200px;
+        max-width: 400px;
         min-height: 50px;
         
     }
     .contact-section{
-        background-color: blue;
+        background-color: rgb(75, 180, 71);
     }
     .right-side-footer{
-        margin-left: 30px;
-        margin-right: 30px;
+        margin-left: 15px !important;
+        margin-right: 15px !important;
     }
     .in4-in-footer{
-        margin-left: 30px;
+        font-size: 15px; 
+    }
+    .title-bottom{
+        font-size: 60px;
     }
 
 }
@@ -296,10 +303,30 @@
     }
     .contact-section{
         background-color: rgb(79, 194, 165);
+        margin-left: 10px;
+    }
+
+    .contact-footer label{
+        font-size: 10px;
     }
     .contact-form input,
     .contact-form textarea{
-        width: 50px;
+        max-width: 300px;
+    }
+    .contact-form textarea {
+        max-width: 300px;
+        min-height: 50px;  
+    }
+    .right-side-footer{
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+    .in4-in-footer{
+        font-size: 20px !important;
+        margin-top: 15px !important;
+    }
+    .title-bottom{
+        font-size: 50px !important;
     }
 
 }
@@ -319,12 +346,36 @@
     justify-content: center;   
     gap: 20px;
     }
+    .contact-footer {
+        grid-template-columns: 1fr !important;
+        height: auto;
+    }
     .contact-section{
         background-color: rgb(148, 40, 112);
+        margin-left: 10px;
+    }
+
+    .contact-footer label{
+        font-size: 10px;
     }
     .contact-form input,
     .contact-form textarea{
-        width: 20px;
+        max-width: 200px;
+    }
+    .contact-form textarea {
+        max-width: 200px;
+        min-height: 50px;  
+    }
+    .right-side-footer{
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+    .in4-in-footer{
+        font-size: 20px !important;
+        margin-top: 15px !important;
+    }
+    .title-bottom{
+        font-size: 50px !important;
     }
 }
 
