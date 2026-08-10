@@ -9,11 +9,13 @@ import os
 import smtplib
 import ssl
 import requests
+import re
 from email.message import EmailMessage
 from pathlib import Path 
 from flask import Flask, flash, jsonify, request, render_template, redirect, url_for
+from dotenv import load_dotenv
 
-os.environ["ABSTRACT_API_KEY"] = "f87accf569f34880b0465b6f1578ce07"
+load_dotenv()
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get(
@@ -538,54 +540,19 @@ def find_food(food_name):
     connection.close()
     return food
 
-def choose_result_image(status):
-    """Choose one random image to show the result."""
-    if status in ("Unknown food", "No special rule."):
-        return "result_image/unknown_food.jpeg"
-    
-    if status == "Same food":
-        return "result_image/same.jpeg"
-    
-    image_folders = {
-        "Compatible": "result_image/compatible",
-        "Caution": "result_image/caution",
-        "Avoid": "result_image/avoid",
-    }
 
-    folder_name = image_folders.get(status)
-    if folder_name is None:
-        return "default.png"
-    
-    image_folder = Path(app.static_folder) / folder_name
-    allowed_extensions = {".png", ".jpg", ".jpeg", ".webp"}
-    images = [
-        image for image in image_folder.iterdir()
-        if image.suffix.lower() in allowed_extensions
-    ]
-
-    if not images:
-        return "default.png"
-    
-    chosen_image = random.choice(images)
-    return f"{folder_name}/{chosen_image.name}"
-
-def record_missing_food(food_name):
-        file_path = "missing_food.txt"
-        food_clean = food_name.strip().lower()
-        
-        existing_foods = []
-        
-        if os.path.exists(file_path):
-            with open(file_path, "r") as file:
-                existing_foods = [line.strip().lower() for line in file]
-    
-        if food_clean not in existing_foods:
-            with open(file_path, "a") as file:
-                file.write(food_name.strip().title() + "\n")
-            print(f"Recorded")
 
 def check_combination(first_food, second_food):
     """Compare the foods with the rules in the database."""
+
+    if any(char.isdigit() for char in 
+           first_food) or any(char.isdigit() 
+                              for char in second_food):
+        return {
+            "status": "Numbers",
+            "message": "Food names should not contain any numbers."
+        }
+    
     first = find_food(first_food)
     second = find_food(second_food)
 
@@ -610,7 +577,7 @@ def check_combination(first_food, second_food):
         return {
             "status": "Same food",
             "message": "They are the same ingredent so they are good to combine. Remember just don't eat too much of them."
-        }
+        }    
     
 
     connection = get_db_connection()
@@ -638,6 +605,69 @@ def check_combination(first_food, second_food):
         "status": "No special rule.",
         "message": (f"We have collected this information. Please try a new combination.")
     }
+
+
+def choose_result_image(status):
+    """Choose one random image to show the result."""
+    if status in ("Unknown food", "No special rule."):
+        return "result_image/unknown_food.jpeg"
+    
+    if status == "Same food":
+        return "result_image/same.jpeg"
+
+    if status == "Numbers":
+        return "result_image/number.jpeg"
+    
+    image_folders = {
+        "Compatible": "result_image/compatible",
+        "Caution": "result_image/caution",
+        "Avoid": "result_image/avoid",
+    }
+
+    folder_name = image_folders.get(status)
+    if folder_name is None:
+        return "default.png"
+    
+    image_folder = Path(app.static_folder) / folder_name
+    allowed_extensions = {".png", ".jpg", ".jpeg", ".webp"}
+    images = [
+        image for image in image_folder.iterdir()
+        if image.suffix.lower() in allowed_extensions
+    ]
+
+    if not images:
+        return "default.png"
+    
+    chosen_image = random.choice(images)
+    return f"{folder_name}/{chosen_image.name}"
+
+def record_missing_food(food_name):
+    if not food_name or not isinstance(food_name, str):
+        return
+    
+    file_path = "missing_food.txt"
+    food_clean = food_name.strip().lower()
+
+    if not food_clean:
+        return
+        
+    existing_foods = []
+        
+    if os.path.exists(file_path):
+        try: 
+            with open(file_path, "r", encoding="utf-8") as file:
+                existing_foods = [line.strip().lower() for line in file]
+        except Exception as e:
+            print("Error reading missing_food.txt:", e)        
+    
+    if food_clean not in existing_foods:
+        try: 
+            with open(file_path, "a") as file:
+                file.write(food_name.strip().title() + "\n")
+            print(f"Recorded missing food: {food_name}")
+        except Exception as e:        
+            print(f"Recorded")
+
 
 
 def is_real_email(email_address):
@@ -717,6 +747,10 @@ def contact():
     customer_name = request.form.get("customer_name", "").strip()
     customer_email = request.form.get("customer_email", "") or request.form.get("email", "").strip()
     customer_message = request.form.get("customer_message", "").strip()
+
+    if not customer_name.replace(" ", "").isalpha():
+        flash("Please check the typos in Customer name", "error")
+        return redirect(request.referrer or url_for("home"))
 
     if not customer_name or not customer_email or not customer_message:
         flash("Please complete every contact field.", "error")

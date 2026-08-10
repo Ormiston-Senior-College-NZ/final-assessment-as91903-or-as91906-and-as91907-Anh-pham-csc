@@ -388,7 +388,10 @@
         font-size: 14px;
     }
     .right_side_checker {
-        width: 50%;
+        width: 70%;
+    }
+    .input_food{
+        width: 700px;
     }
     .navigation a {
         font-size: 28px;
