@@ -12,10 +12,13 @@ import requests
 import re
 from email.message import EmailMessage
 from pathlib import Path 
-from flask import Flask, flash, jsonify, request, render_template, redirect, url_for
 from dotenv import load_dotenv
-
 load_dotenv()
+env_path = Path(__file__).resolve().parent / '.env'
+load_dotenv(dotenv_path=env_path)
+from flask import Flask, flash, jsonify, request, render_template, redirect, url_for
+
+
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get(
@@ -672,6 +675,7 @@ def record_missing_food(food_name):
 
 def is_real_email(email_address):
     api_key = os.environ.get("ABSTRACT_API_KEY")
+
     if not api_key or not email_address:
         return True
 
@@ -683,11 +687,7 @@ def is_real_email(email_address):
             data = response.json()
 
             email_status = data.get("email_deliverability", {}).get("status") or data.get("deliverability")
-            is_valid_format = data.get("is_valid_format", {}).get("value") or data.get("is_valid_format")
-
-            if email_status:
-                return email_status.upper() == "DELIVERABLE"
-            return bool(is_valid_format)    
+            return str(email_status).upper() == "DELIVERABLE"
         return True
     except Exception as e:
         print("API Error:", e)
