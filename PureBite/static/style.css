@@ -1,5 +1,8 @@
 /* Make the web-app responsive*/ 
 @media (max-width: 900px) {
+    .body{
+        background-color: aquamarine !important;
+    }
     .container {
         grid-template-columns: 1fr;
         height: auto;
@@ -13,6 +16,9 @@
     gap: 20px;
     }
 
+    .navigation a{
+        font-size: 30px !important;
+    }
     .contact-section{
         margin-left: 20px;
     }
@@ -43,17 +49,24 @@
 }
 
 @media (max-width: 600px) {
+    .body{
+        background: pink !important;
+    }
     .header {
         grid-template-columns: 1fr;
         text-align: center;
     }
     .title {
-        font-size: 50px;
-        margin-left: 0;
+        font-size: 30px;
+        margin: 10px !important;
     }
     .search {
-        width: 100%;
+        width: 50%;
         margin-top: 10px;
+    }
+    .container{
+        grid-template-columns: 1fr !important;
+        height: auto;
     }
     .right_side_checker {
         width:60%;
@@ -63,6 +76,7 @@
     justify-content: center;   
     gap: 20px;
     }
+
     .contact-section{
         margin-left: 10px;
     }
@@ -87,7 +101,7 @@
         margin-top: 15px !important;
     }
     .title-bottom{
-        font-size: 50px !important;
+        font-size: 45px !important;
     }
 
 }
@@ -140,8 +154,11 @@
 }
 
 @media (max-height: 500px) {
+    .body{
+        background-color: coral !important;
+    }
     .container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         height: auto;
     }
     .left, .right{
@@ -157,6 +174,10 @@
         font-size: 28px;
         gap: 20px;
     }
+
+    .input_food{
+        width: 300px !important;
+    }
     .btn_group{
     display: flex;             
     justify-content: center;   
@@ -165,7 +186,11 @@
 
     .contact-form input,
     .contact-form textarea{
-        width: 20px;
+        max-width: 300px;
+    }
+
+    .title-bottom{
+        font-size: 40px !important;
     }
 
 }
@@ -224,7 +249,7 @@
 /* Navigation bar*/
 .navigation a{
     text-decoration: none;
-    font-size: 28px;
+    font-size: 38px;
     margin: 20px;
     color: #f8f7da;
     font-family: "Cormorant Garamond", serif;
@@ -312,7 +337,7 @@
 }
 
 .input_food{
-    width: 300px;              
+    width: 450px;              
     height: 40px;             
     display: inline-flex;
     justify-content: center;
@@ -411,21 +436,35 @@
     font-weight: bold; 
 }
 
+.left p{
+    margin: 20px;
+}
 .step{
-    font-weight: bold;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: bolder;
     text-decoration: underline;
-    font-size: 16px;
+    font-size: 30px;
+    margin-right: 5px;
 }
 
 .step-station{
-    font-size: 15px;
+    font-size: 25px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+}
+
+.disclaimer{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    color: #7c2222;
 }
 
 
 
 /* Footer */
 .contact-footer {
-    margin-top: 60px;
+    margin-top: 30px;
     padding: 10px 10px;
     background-color: #467010;
     display: grid;
