@@ -541,16 +541,16 @@ def find_food(food_name):
     return food
 
 
-
 def check_combination(first_food, second_food):
     """Compare the foods with the rules in the database."""
 
-    if any(char.isdigit() for char in 
-           first_food) or any(char.isdigit() 
-                              for char in second_food):
+    if re.search(r'[^a-zA-Z\s\-]', 
+                 first_food) or re.search(r'[^a-zA-Z\s\-]', 
+                                          second_food):
         return {
-            "status": "Numbers",
-            "message": "Food names should not contain any numbers."
+            "status": "Invalid",
+            "message": "Food names should not contain numbers or"
+            " special characters. Please enter valid food names."
         }
     
     first = find_food(first_food)
@@ -615,8 +615,8 @@ def choose_result_image(status):
     if status == "Same food":
         return "result_image/same.jpeg"
 
-    if status == "Numbers":
-        return "result_image/number.jpeg"
+    if status == "Invalid":
+        return "result_image/invalid.jpeg"
     
     image_folders = {
         "Compatible": "result_image/compatible",
@@ -642,7 +642,7 @@ def choose_result_image(status):
     return f"{folder_name}/{chosen_image.name}"
 
 def record_missing_food(food_name):
-    if not food_name or not isinstance(food_name, str):
+    if re.search(r'[^a-zA-Z\s\-]', food_name):
         return
     
     file_path = "missing_food.txt"

@@ -44,9 +44,21 @@
             <div class="checker">
                 <form method="post" class="left_side_checker" action="{{ url_for('checker')}}">
                     <h3 class="h3">Enter the first food name </h3>
-                    <input type="text" name="stfoodname" class="input_food"  value="{{ first_food }}" required>
+                    <input
+                        type="text"
+                        name="stfoodname"
+                        class="input_food"
+                        maxlength="20"
+                        value="{{ first_food }}"
+                        required>
                     <h3 class="h3">Enter the second food name </h3>
-                    <input type="text" name="ndfoodname" class="input_food" value="{{ second_food }}" required>
+                    <input
+                        type="text"
+                        name="ndfoodname"
+                        class="input_food"
+                        maxlength="20"
+                        value="{{ second_food }}"
+                        required>
                     <br><br>
                     <div class="btn_group">
                         <input type="submit" value="Submit" class="btn_submit">
@@ -85,6 +97,7 @@
                     id="customer_name"
                     name="customer_name"
                     type="text"
+                    maxlength="30"
                     placeholder="Your first and last name"
                     required
                 >
@@ -94,6 +107,7 @@
                     id="customer_email"
                     name="customer_email"
                     type="email"
+                    maxlength="80"
                     placeholder="Your email"
                     required
                 >
