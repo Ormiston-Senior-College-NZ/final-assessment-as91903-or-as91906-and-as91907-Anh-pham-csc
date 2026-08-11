@@ -54,6 +54,7 @@
     }
     .header {
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
         text-align: center;
     }
     .title {
@@ -165,7 +166,7 @@
         font-size: 14px;
     }
     .right_side_checker {
-        width: 70%;
+        width: 50% !important;
     }
     .input_food{
         width: 700px;
@@ -173,6 +174,10 @@
     .navigation a {
         font-size: 28px;
         gap: 20px;
+
+    }
+    .navigation {
+        width: 100%;
     }
 
     .input_food{
@@ -294,6 +299,129 @@
     background-color: transparent !important;
     font-size: 20px !important;
 }
+
+/* --------------------------------- Home page -------------------------------------*/
+.lean{
+    font-size: 25px;
+    background-color: #598f18;
+    transform: rotateZ(30)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Checker's body*/ 
 .container{
@@ -469,6 +597,7 @@
     background-color: #467010;
     display: grid;
     grid-template-columns: 3fr 1fr;
+    width: fit-content;
 }
 
 .contact-section {

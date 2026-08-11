@@ -697,7 +697,7 @@ def is_real_email(email_address):
 @app.route('/')
 def home():
     return render_template('home.html')
-    
+
 @app.route('/overall')
 def overall():
     return render_template('overall.html')
