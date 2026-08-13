@@ -54,7 +54,17 @@
     .title-bottom{
         font-size: 50px !important;
     }
+    /*copyright*/
+    .copyright-page{
+        margin-left: 0px !important;
+        width: 90%;
+    }
 
+    .title-copyright,
+    .copyright-page .normal-text,
+    .copyright-in4 a{
+        margin-left: 20px!important;
+    }
 }
 
 @media (max-width: 600px) {
@@ -130,6 +140,13 @@
     .h2{
         font-size: 20px !important;
     }
+    .checker{
+        grid-template-columns: 1fr !important;
+    }
+    .left, .right{
+        padding: 0px !important;
+        margin-left: 0px !important;
+    }
     .input_food{
         width: 150px!important;
     }
@@ -141,23 +158,29 @@
     justify-content: center;   
     gap: 20px;
     }
-    .contact-footer{
-        width: fit-content !important;
-    }
-    .contact-section{
-        margin-left: 10px;
-    }
 
+    .contact-footer{
+        width: 100% !important;
+        grid-template-columns: 1fr !important;
+        margin-left: -20px !important;
+    }
+    .contact-section h2{
+        margin-right: 40px !important;
+    }
     .contact-footer label{
         font-size: 10px;
     }
     .contact-form input,
     .contact-form textarea{
-        max-width: 200px;
+        max-width: 250px;
     }
     .contact-form textarea {
-        max-width: 200px;
+        max-width: 250px;
         min-height: 50px;  
+    }
+    .contact-form button{
+        width: 250px!important;
+        margin-left: 0px !important;
     }
     .right-side-footer{
         margin-left: 10px !important;
@@ -166,9 +189,11 @@
     .in4-in-footer{
         font-size: 20px !important;
         margin-top: 15px !important;
+        text-align: center !important;
     }
     .title-bottom{
         font-size: 50px !important;
+        float: right !important;
     }
 }
 
@@ -240,6 +265,9 @@
     font-size: 20px;
 }
 
+a {
+  word-break: break-word;
+}
 
 /* Header */
 .header {
@@ -408,7 +436,48 @@
     }
 }
 
+/*-----------------------------------Overall information-----------------------------------*/
 
+
+
+/*-----------------------------------Transmission routes-----------------------------------*/
+
+
+
+/*-----------------------------------Prevention tips-----------------------------------*/
+
+
+/*-----------------------------------copyright-----------------------------------*/
+.copyright-page{
+    margin-left: 50px;
+}
+
+.title-copyright{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 30px;
+    font-weight: 500;
+    text-align:justify;
+    font-style: bold;
+    text-decoration: underline;
+    margin-left: 50px;
+    display:inline
+}
+
+.copyright-page .normal-text{
+    margin-left: 80px;
+}
+
+.copyright-in4 a{
+    color: blue;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    margin-left: 120px;
+}
+
+/*-----------------------------------Privacy-----------------------------------*/
+.privacy-page .normal-text{
+    margin: 50px;
+}
 
 
 
