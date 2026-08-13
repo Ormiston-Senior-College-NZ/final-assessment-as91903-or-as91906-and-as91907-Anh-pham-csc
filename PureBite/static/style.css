@@ -437,7 +437,22 @@ a {
 }
 
 /*-----------------------------------Overall information-----------------------------------*/
+.overall-page{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
 
+
+.information{
+    padding: 20px;
+    margin: 20px;
+}
+
+.report{
+    padding: 20px;
+    margin: 20px;
+    color: #5e9918;
+}
 
 
 /*-----------------------------------Transmission routes-----------------------------------*/
