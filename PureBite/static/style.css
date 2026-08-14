@@ -153,6 +153,13 @@
     .right_side_checker {
         width: 50%;
     }
+    .container {
+        grid-template-columns: 1fr !important;
+        height: auto;
+    }
+    .right_side_checker {
+        width: 70%;
+    }
     .btn_group{
     display: flex;             
     justify-content: center;   
@@ -442,18 +449,60 @@ a {
     grid-template-columns: 2fr 1fr;
 }
 
-
 .information{
-    padding: 20px;
     margin: 20px;
+    background-color: pink;
 }
 
-.report{
-    padding: 20px;
-    margin: 20px;
+.title-overall{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Cormorant Garamond", serif;
     color: #5e9918;
 }
 
+.information .normal-text{
+    margin: 0 30px;
+
+}
+
+.report{
+    margin: 20px;
+    color: #467010;
+    background-color: rgb(180, 180, 100);
+}
+
+.report h2{
+    text-align: center;
+    font-size: 24px;
+    font-family: "Nunito", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.report .h3{
+    font-size: 20px;
+    font-family: "Nunito", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    color:#467010;
+}
+
+.report-link{
+    margin-left: 2px !important;
+    font-size: 20px;
+    font-family: "Nunito", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #467010;
+    text-decoration: none;
+    text-decoration: underline !important;
+}
+
+.information .home-img{
+    width: fit-content;
+}
 
 /*-----------------------------------Transmission routes-----------------------------------*/
 
