@@ -541,7 +541,9 @@ a {
 .smaller-bullet-point{
     margin-left: 20px;
 }
-
+.information .home-img{
+    width: 90%;
+}
 
 /*-----------------------------------Prevention tips-----------------------------------*/
 
