@@ -145,11 +145,12 @@
     .title-bottom{
         font-size: 45px !important;
     }
-
-
 }
 
 @media (max-width: 400px) {
+    .body{
+        background-color: blueviolet;
+    }
     .title {
         font-size: 40px;
     }
@@ -537,7 +538,9 @@ a {
 }
 
 /*-----------------------------------Transmission routes-----------------------------------*/
-
+.smaller-bullet-point{
+    margin-left: 20px;
+}
 
 
 /*-----------------------------------Prevention tips-----------------------------------*/
@@ -566,7 +569,8 @@ a {
 .copyright-in4 a{
     color: blue;
     font-family: "Cormorant Garamond", serif;
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: 400px;
     margin-left: 120px;
 }
 
