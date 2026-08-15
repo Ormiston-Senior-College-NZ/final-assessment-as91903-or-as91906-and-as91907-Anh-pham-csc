@@ -11,6 +11,12 @@
     .home-img{
         width: 70% !important;
     }
+
+    /* overall */
+    .overall-page{
+        grid-template-columns: 1fr !important;
+        height: auto;
+    }
     /*checker part*/
     .container {
         grid-template-columns: 1fr !important;
@@ -83,6 +89,14 @@
         width: 50%;
         margin-top: 10px;
     }
+
+    /* overall */
+    .overall-page{
+        grid-template-columns: 1fr !important;
+        height: auto;
+    }
+
+    /*checker*/
     .container{
         grid-template-columns: 1fr !important;
         height: auto;
@@ -98,13 +112,17 @@
     justify-content: center;   
     gap: 20px;
     }
+    /*footer*/
+    .contact-footer{
+        width: fit-content !important;
+        grid-template-columns: 1fr !important;
+    } 
     .contact-footer{
         width: fit-content !important;
     }
     .contact-section{
         margin-left: 10px;
     }
-
     .contact-footer label{
         font-size: 10px;
     }
@@ -128,6 +146,7 @@
         font-size: 45px !important;
     }
 
+
 }
 
 @media (max-width: 400px) {
@@ -140,8 +159,15 @@
     .h2{
         font-size: 20px !important;
     }
+    /* overall */
+    .overall-page{
+        grid-template-columns: 1fr !important;
+        height: auto;
+    }
+    /*checker*/
     .checker{
         grid-template-columns: 1fr !important;
+        height:auto !important;
     }
     .left, .right{
         padding: 0px !important;
@@ -160,12 +186,20 @@
     .right_side_checker {
         width: 70%;
     }
+    .checker h3{
+        font-size: 25px !important;
+    }
     .btn_group{
     display: flex;             
     justify-content: center;   
     gap: 20px;
     }
-
+    .btn_submit, .btn_clear{
+        width: 120px !important;
+        height: 30px !important;
+        font-size: 20px !important;
+    }
+    /*footer*/
     .contact-footer{
         width: 100% !important;
         grid-template-columns: 1fr !important;
@@ -451,7 +485,6 @@ a {
 
 .information{
     margin: 20px;
-    background-color: pink;
 }
 
 .title-overall{
@@ -469,7 +502,6 @@ a {
 .report{
     margin: 20px;
     color: #467010;
-    background-color: rgb(180, 180, 100);
 }
 
 .report h2{
@@ -680,6 +712,10 @@ a {
     align-items: start
 }
 
+.checker h3{
+    font-size: 30px;
+}
+
 .left_side_checker {
     padding-top: 15px;
     display: flex;
@@ -703,7 +739,7 @@ a {
     align-items: center;
     box-sizing: border-box;    
     background-color: #f8f7da;             
-    font-size: 15px;
+    font-size: 20px;
     border: none;
     border-radius: 50px; 
     text-align: center;  
@@ -735,8 +771,8 @@ a {
 
 .btn_submit,
 .btn_clear {
-    width: 120px;              
-    height: 30px;             
+    width: 150px;              
+    height: 40px;             
     
     display: inline-flex;
     justify-content: center;
@@ -746,7 +782,7 @@ a {
     background-color: #f8f7da; 
     color: #468c37;            
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
     letter-spacing: 0.5px;
     
     
@@ -820,8 +856,7 @@ a {
 }
 
 
-
-/* Footer */
+/*------------------------- Footer----------------------------------------*/
 .contact-footer {
     margin-top: 30px;
     padding: 10px 10px;

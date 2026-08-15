@@ -8,10 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Merienda:wght@300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet"/>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.jx"></script>
 </head>
 <body class="body">
-    <header>
-        
+    <header> 
         <div class="header">
             <a href = "{{ url_for('home')}}" class="title_link">
                 <h1 class="title">PureBite</h1>
@@ -53,9 +55,12 @@
                     - Food poisoning is a significant public health issue in New Zealand, 
                     affecting around 200,000 people annually, with 500 cases reported each day.
                      => Ratio 1/1000 </p>
-                <img src="{{ url_for('static', filename='table-74.jpeg')}}"
+                <a href="{{ url_for('static', filename='table-74-thumbnail.jpeg')}}">
+                    <img src="{{ url_for('static', filename='table-74.jpeg')}}"
                     alt="Table 73. Number of Episurv cases of selected notifiable diseases by age group, 2023"
                     class="home-img">
+                </a>                
+                    
                 <p class="normal-text">
                     According to 2023 health data on the seven most common notifiable diseases, 
                     food poisoning disproportionately affected children under 4 and adults over 
