@@ -46,6 +46,11 @@
         max-width: 400px;
         min-height: 50px;   
     }
+    .contact-form button{
+        width: 250px!important;
+        display: center;
+        margin: 10px auto 0;
+    }
     .right-side-footer{
         margin-left: 15px !important;
         margin-right: 15px !important;
@@ -120,6 +125,11 @@
     .contact-form textarea{
         max-width: 300px;
     }
+    .contact-form button{
+        width: 250px!important;
+        display: center;
+        margin: 10px auto 0;
+    }
     .contact-form textarea {
         max-width: 300px;
         min-height: 50px;  
@@ -183,9 +193,10 @@
     gap: 20px;
     }
     .btn_submit, .btn_clear{
-        width: 120px !important;
+        width: 100px !important;
         height: 30px !important;
         font-size: 20px !important;
+        display: center;
     }
     /*footer*/
     .contact-footer{
@@ -209,7 +220,8 @@
     }
     .contact-form button{
         width: 250px!important;
-        margin-left: 0px !important;
+        display: center;
+        margin: 10px auto 0;
     }
     .right-side-footer{
         margin-left: 10px !important;
