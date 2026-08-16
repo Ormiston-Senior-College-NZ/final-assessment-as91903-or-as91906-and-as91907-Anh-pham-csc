@@ -187,7 +187,7 @@
     .right_side_checker {
         width: 70%;
     }
-    .checker h3{
+    .checker {
         font-size: 25px !important;
     }
     .btn_group{
@@ -288,7 +288,7 @@
 /* Body */
 .body {
     background-color: #fcffde;
-    width: 100%;
+    max-width: 100%;
 }
 .h2{
     font-family: "Cormorant Garamond", serif;
@@ -344,24 +344,28 @@ a {
 .navigation a{
     text-decoration: none;
     font-size: 38px;
-    margin: 20px;
+    margin: 15px;
     color: #f8f7da;
     font-family: "Cormorant Garamond", serif;
 }
 
 .navigation{
     background-color:#467010;
-    padding: 15px;
+    padding: 5px;
+    border-radius: 20px;
 }
 
-.nav-bar{
+.nav-bar, .navigation{
     display: flex;
-    justify-content: center; 
-    align-items: center;
-    gap: 15px;               
+    flex-wrap: wrap;
+    justify-content: space-evenly; 
+    align-items: center;         
     width: 100%;
 }
 
+.nav-bar a, .navigation-a{
+    white-space: nowrap;
+}
 .navigation a:hover{
     font-weight: bold;
 }
@@ -370,7 +374,8 @@ a {
     font-weight:bold;
     cursor: pointer;
     text-decoration: underline;
-} 
+}
+
 
 /* Google search box */ 
 .gsc-control-cse {
@@ -450,10 +455,10 @@ a {
     background: linear-gradient(
         90deg,
         #93dc45 0%,
-        #b3f06d 25%, 
+        #91c754 25%, 
         #dcfaa2 50%, 
-        #b3f06d 75%, 
-        #93dc45 100%
+        #84bd43 75%, 
+        #76bb2c 100%
     );
         
     background-size: 200% 100%;
@@ -489,7 +494,7 @@ a {
 }
 
 .title-overall{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     font-family: "Cormorant Garamond", serif;
     color: #5e9918;
@@ -497,7 +502,6 @@ a {
 
 .information .normal-text{
     margin: 0 30px;
-
 }
 
 .report{
@@ -510,7 +514,7 @@ a {
     font-size: 24px;
     font-family: "Nunito", sans-serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 0px;
 }
 
@@ -518,7 +522,7 @@ a {
     font-size: 20px;
     font-family: "Nunito", sans-serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 600;
     color:#467010;
 }
 
@@ -527,7 +531,7 @@ a {
     font-size: 20px;
     font-family: "Nunito", sans-serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 600;
     color: #467010;
     text-decoration: none;
     text-decoration: underline !important;
@@ -857,7 +861,7 @@ a {
 .disclaimer{
     font-style: italic;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 25px;
     color: #7c2222;
 }
 
@@ -873,7 +877,7 @@ a {
 }
 
 .contact-section {
-    margin-left: 100px !important;
+    margin: 20px;
     color: white;
     font-family: "Public Sans", sans-serif;
     display: grid;
@@ -897,6 +901,7 @@ a {
     margin-top: 6px;
     font-size: 20px;
     font-weight: bold;
+    margin-left: 110px;
 }
 
 .contact-form input,
@@ -908,6 +913,7 @@ a {
     font: inherit;
     box-sizing: border-box;
     display: center;
+    margin: 10px auto 0;
 }
 
 .contact-form textarea {
@@ -938,6 +944,10 @@ a {
 .contact-message {
     padding: 10px;
     border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    margin: 10px auto 0;
+    padding: 8px;
 }
 
 .contact-message.success {
@@ -948,14 +958,13 @@ a {
 .contact-message.error {
     background-color: #ffe0e0;
     color: #7b1f1f;
-}
 
+}
 
 .right-side-footer{
     display: grid;
     margin-top: 30px;
     margin-right: 50px;
-    margin-left: 30px
 }
 
 .in4-in-footer{
@@ -964,7 +973,7 @@ a {
     font-family: "Cormorant Garamond", sans-serif;
     text-decoration: none;
     margin-top: 20px;
-    margin-left: 50px;
+    margin-left: 30px !important;
 }
 
 .in4-in-footer:hover{
