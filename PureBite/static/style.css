@@ -1,8 +1,5 @@
 /* Make the web-app responsive*/ 
 @media (max-width: 900px) {
-    .body{
-        background-color: aquamarine !important;
-    }
     /*home*/
     .home-page{
         grid-template-columns: 1fr !important;
@@ -11,7 +8,6 @@
     .home-img{
         width: 70% !important;
     }
-
     /* overall */
     .overall-page{
         grid-template-columns: 1fr !important;
@@ -65,7 +61,6 @@
         margin-left: 0px !important;
         width: 90%;
     }
-
     .title-copyright,
     .copyright-page .normal-text,
     .copyright-in4 a{
@@ -74,9 +69,6 @@
 }
 
 @media (max-width: 600px) {
-    .body{
-        background: pink !important;
-    }
     .header {
         grid-template-columns: 1fr !important;
         text-align: center;
@@ -89,13 +81,11 @@
         width: 50%;
         margin-top: 10px;
     }
-
     /* overall */
     .overall-page{
         grid-template-columns: 1fr !important;
         height: auto;
     }
-
     /*checker*/
     .container{
         grid-template-columns: 1fr !important;
@@ -148,9 +138,6 @@
 }
 
 @media (max-width: 400px) {
-    .body{
-        background-color: blueviolet;
-    }
     .title {
         font-size: 40px;
     }
@@ -240,9 +227,6 @@
 }
 
 @media (max-height: 500px) {
-    .body{
-        background-color: coral !important;
-    }
     .container {
         grid-template-columns: 1fr !important;
         height: auto;
@@ -549,9 +533,6 @@ a {
     width: 90%;
 }
 
-/*-----------------------------------Prevention tips-----------------------------------*/
-
-
 /*-----------------------------------copyright-----------------------------------*/
 .copyright-page{
     margin-left: 50px;
@@ -584,117 +565,6 @@ a {
 .privacy-page .normal-text{
     margin: 50px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Checker's body*/ 
 .container{
@@ -992,17 +862,3 @@ a {
     transform: translateY(-1px);
     color:#85ce32
 }
-
-
-
-
-
-
-
-
-
-/* Cherry Bomb One: Brand name
-Cormorant Garamond: Navigation bar, all information on the web page (normal, 25, black), in the contact part (normal, 40-23-20, black/white), in the checker (normal, heading 30, information 20, white);  copyright (normal, 30, white), headings (boldl, 25, #5e9918) 
-Nunito: welcome sentence (bold, size 30, #5e9918), report’s links (italic, 24, #467010), explanation (normal, 21, white)
-Public Sans: Send/check buttons (bold, 15, #468c37)
-Merienda: Encourage sentence (normal, 20, black)
