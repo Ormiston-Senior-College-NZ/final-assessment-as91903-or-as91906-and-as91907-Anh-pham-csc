@@ -11,7 +11,7 @@
 </head>
 <body class="body">
     <header>
-        
+
         <div class="header">
             <a href = "{{ url_for('home')}}" class="title_link">
                 <h1 class="title">PureBite</h1>
@@ -40,20 +40,20 @@
             <p>
                 <span class="step"> Step 1:</span>
                 <span class="step-station">Type two food names in the blanks! (for example "chicken" and "beef") </span>
-                <br></br>
+                <br>
                 <span class="step"> Step 2:</span>
                 <span class="step-station"> Click Sumbit button or press Enter on your keyboard</span>
-                <br></br>
+                <br>
                 <span class="step"> Step 3:</span>
                 <span class="step-station"> Read the result and message before making your decision </span>
-                <br></br>
+                <br>
                 <span class="disclaimer"> ‼️Disclaimer: This web app is used for educational purpose only!
-                All information is collected from scientific report and might have a conflict with traditional perspective. 
-                Please considering the result carefully. </span> 
+                All information is collected from scientific report and might have a conflict with traditional perspective.
+                Please considering the result carefully. </span>
             </p>
 
         </div>
-        <div class="right"> 
+        <div class="right">
             <h2 class ="h2"> Food compatibility checker </h2>
             <div class="checker">
                 <form method="post" class="left_side_checker" action="{{ url_for('checker')}}">
@@ -85,14 +85,14 @@
                          class=" right_side_checker">
                 {% else %}
                     <img src="{{ url_for('static', filename='default.png') }}"
-                        alt="Check This Tool" class="right_side_checker">    
+                        alt="Check This Tool" class="right_side_checker">
                 {% endif %}
             </div>
                 <div>
                 <h2 class = "result_status">{{result.status}}</h2>
                 <p class = "result_message"> {{result.message}} </p>
-            </div> 
-        </div>   
+            </div>
+        </div>
     </div>
 
     <footer class="contact-footer">
@@ -142,11 +142,12 @@
             <a href = "{{ url_for('copyright')}}" class="in4-in-footer"> Copyright </a>
             <a href = "{{ url_for('privacy')}}" class="in4-in-footer"> Privacy </a>
             <a href = "{{ url_for('disclaimer')}}" class="in4-in-footer"> Disclaimer </a>
-                
+
             <a href = "{{ url_for('home')}}" class="title_link">
                 <h1 class="title-bottom">PureBite</h1>
             </a>
         </section>
+        <div> <p class="normal-text">&copy; 2026 PureBite. All rights reserved.</p> </div>
     </footer>
 </body>
 </html>

@@ -11,7 +11,7 @@
 </head>
 <body class="body">
     <header>
-        
+
         <div class="header">
             <a href = "{{ url_for('home')}}" class="title_link">
                 <h1 class="title">PureBite</h1>
@@ -46,35 +46,35 @@
 
         <div class="right-home-page">
             <p class="welcome"> WELCOME TO PUREBITE </p>
-            <p class="state"> WHERE YOU GAIN INTERESTING EXPERIENCE AND LEARN  MORE ABOUT FOOD POISONING  </p> 
-            <p class="normal-text"> 
-                PureBite is a web application that was created to 
-                provide information about food poisoning and introduce 
-                the users to a food compatibility checking tool, which 
-                can help the users to check whether they can combine 
-                two kinds of food together or not. 
-            </p> 
+            <p class="state"> WHERE YOU GAIN INTERESTING EXPERIENCE AND LEARN  MORE ABOUT FOOD POISONING  </p>
+            <p class="normal-text">
+                PureBite is a web application that was created to
+                provide information about food poisoning and introduce
+                the users to a food compatibility checking tool, which
+                can help the users to check whether they can combine
+                two kinds of food together or not.
+            </p>
             <br>
             <h3 class="title-overall"> Guidance on how to use this web-app </h3>
             <p class="normal-text">
-                - For a bigger and clearer picture, click on that picture 
-                to zoom it out. Click on the reverse arrow (the arrow 
-                pointing to the left on top of the laptop's browser) to close it.  
+                - For a bigger and clearer picture, click on that picture
+                to zoom it out. Click on the reverse arrow (the arrow
+                pointing to the left on top of the laptop's browser) to close it.
                 <br><br>
-                - For further information, click on the link 
+                - For further information, click on the link
                 (underlined sentence) in the relevant report part.
                 <br><br>
-                - For checking food compatibility, use the compatible checker 
-                in the final page and follow the guidance. 
+                - For checking food compatibility, use the compatible checker
+                in the final page and follow the guidance.
                 <br><br>
-                - Any feedback, please send us an email by filling up the contact form in the footer. 
+                - Any feedback, please send us an email by filling up the contact form in the footer.
             </p>
-           
+
             <div class="banner-wrapper">
                 <a href="{{ url_for('overall')}}" class="flowing-btn"> Click on the next page now!!!</a>
             </div>
         </div>
-        
+
     </main>
     <footer class="contact-footer">
         <section class="contact-section">
@@ -123,13 +123,13 @@
             <a href = "{{ url_for('copyright')}}" class="in4-in-footer"> Copyright </a>
             <a href = "{{ url_for('privacy')}}" class="in4-in-footer"> Privacy </a>
             <a href = "{{ url_for('disclaimer')}}" class="in4-in-footer"> Disclaimer </a>
-                
+
             <a href = "{{ url_for('home')}}" class="title_link">
                 <h1 class="title-bottom">PureBite</h1>
             </a>
 
         </section>
-
+        <div> <p class="normal-text">&copy; 2026 PureBite. All rights reserved.</p> </div>
     </footer>
 </body>
 </html>

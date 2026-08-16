@@ -1,24 +1,27 @@
-"""This is a web-app that created to:
- - provide more information about food poisoning.
- - introduce a food incompatibility checking tool.
-by using Python (Flask) and React."""
+"""PureBite food-poisoning information and food-combination web application.
 
-import sqlite3
-import random
+Main functions include:
+- provide more information about food poisoning.
+- introduce a food incompatibility checking tool.
+Built with Python and Flask.
+"""
+
 import os
-import smtplib
-import ssl
-import requests
+import random
 import re
+import smtplib
+import sqlite3
+import ssl
 from email.message import EmailMessage
-from pathlib import Path 
+from pathlib import Path
+
+import requests
 from dotenv import load_dotenv
+from flask import Flask, flash, jsonify, redirect, render_template, request, url_for
+
 load_dotenv()
-env_path = Path(__file__).resolve().parent / '.env'
+env_path = Path(__file__).resolve().parent / ".env"
 load_dotenv(dotenv_path=env_path)
-from flask import Flask, flash, jsonify, request, render_template, redirect, url_for
-
-
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get(
@@ -32,7 +35,7 @@ def get_db_connection():
     """Connect the database with the python file"""
     connection = sqlite3.connect(DATABASE)
     connection.row_factory = sqlite3.Row
-    return connection 
+    return connection
 
 
 def create_database():
@@ -51,8 +54,8 @@ def create_database():
         CREATE TABLE IF NOT EXISTS combination_rules (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             group_one TEXT NOT NULL,
-            group_two TEXT NOT NULL, 
-            result TEXT NOT NULL, 
+            group_two TEXT NOT NULL,
+            result TEXT NOT NULL,
             message TEXT NOT NULL)
     """)
 
@@ -65,7 +68,7 @@ def create_database():
             "ghee", "cream cheese", "buttermilk",
             "condensed milk", "evaporated milk",
             "milk powder",
-        ], 
+        ],
 
         "acidic": [
             "orange", "lemon", "lime", "grapefruit",
@@ -91,7 +94,7 @@ def create_database():
             "peanut butter", "almonds", "walnuts",
             "pistachios", "cashews", "pumpkin seeds",
             "chia seeds", "flaxseed", "quinoa", "spirulina",
-        ], 
+        ],
 
         "starches": [
             "white rice", "rice", "brown rice", "basmati rice",
@@ -99,12 +102,12 @@ def create_database():
             "pasta", "noodles", "udon", "soba", "rice noodles",
             "vermicelli", "corn", "cornmeal", "tortilla",
             "oats", "barley", "rye", "buckwheat", "millet",
-            "sorghum", "potato", "sweet potato", "yams", 
-            "cassava", "tapioca", "cereal", "granola", 
+            "sorghum", "potato", "sweet potato", "yams",
+            "cassava", "tapioca", "cereal", "granola",
             "crackers", "pretzels", "bagels", "pancakes",
             "waffles", "muffins", "donuts", "croissant",
             "pizza crust",
-        ], 
+        ],
 
         "fats":[
             "olive oil", "avocado", "coconut oil",
@@ -123,36 +126,36 @@ def create_database():
             "garlic", "bell pepper","zucchini",
             "eggplant", "pumpkin", "squash", "asparagus",
             "green beans", "peas", "cabbage", "okra",
-            "radish", "turnip", "parsnip", 
+            "radish", "turnip", "parsnip",
             "brussels sprouts", "artichoke", "leek",
             "ginger", "turmeric"
-        ], 
+        ],
 
         "sugar": [
             "honey", "maple syrup", "brown sugar",
             "white sugar", "molasses", "jam",
             "chocolate", "candy",
-        ], 
+        ],
 
         "fermented foods": [
             "kimchi", "sauerkraut", "miso",
             "kombucha", "kefir", "sourdough",
             "pickles", "fish sauce",
-        ], 
+        ],
 
         "caffeinated": [
-            "energy drink", "coffee", "tea", 
-        ], 
+            "energy drink", "coffee", "tea",
+        ],
 
         "alcohol": [
             "beer", "wine", "alcohol",
         ]
     }
     rules = [
-        ("dairy", "acidic", "Caution", 
+        ("dairy", "acidic", "Caution",
          "This combination can cause dairy to curdle."
          "It is usually not harmful, but some people may find it uncomfortable."
-        ), 
+        ),
 
         ("alcohol", "caffeinated", "Avoid",
          "Caffein can hide the effects of alcohol and make it easier to drink more intended."
@@ -177,7 +180,7 @@ def create_database():
 
         ("proteins", "vegetables", "Compatible",
          "Proteins and non-starchy vegetables are a beneficial combination "
-         "because it helps to ensure that the body receives all the essential nutrients for a healthy body." 
+         "because it helps to ensure that the body receives all the essential nutrients for a healthy body."
         ),
 
         ("proteins", "fats", "Compatible",
@@ -207,7 +210,7 @@ def create_database():
         ("proteins", "fermented foods", "Compatible",
          "Meat is an abundant source of protein but it takes a lot of time and energy "
          "to break complex peptide bonds. Fermented foods contain natural lactic acid "
-         "that helps support the acidic environment of the stomach, stimulating digestive enzymes to work better." 
+         "that helps support the acidic environment of the stomach, stimulating digestive enzymes to work better."
         ),
 
         ("proteins", "sugar", "Caution",
@@ -216,7 +219,7 @@ def create_database():
         ),
 
         ("starches", "starches", "Compatible",
-        "Grains share the same steady starch digestion so thay can be eaten together." 
+        "Grains share the same steady starch digestion so thay can be eaten together."
         ),
 
         ("starches", "fruits", "Avoid",
@@ -511,13 +514,12 @@ def create_database():
          "calories consumed, overloading the pancreas "
          "and liver, leading to obesity and type 2 diabetes."),
     ]
-    
+
     foods = []
-    
+
     for food_group, food_names in FOOD_GROUPS.items():
         for food_name in food_names:
             foods.append((food_name, food_group))
-
 
     cursor.executemany(
         "INSERT OR IGNORE INTO foods (name, food_group) VALUES (?, ?)",
@@ -533,6 +535,7 @@ def create_database():
     connection.commit()
     connection.close()
 
+
 def find_food(food_name):
     """Search for the food names in the database."""
     connection = get_db_connection()
@@ -547,15 +550,15 @@ def find_food(food_name):
 def check_combination(first_food, second_food):
     """Compare the foods with the rules in the database."""
 
-    if re.search(r'[^a-zA-Z\s\-]', 
-                 first_food) or re.search(r'[^a-zA-Z\s\-]', 
+    if re.search(r'[^a-zA-Z\s\-]',
+                 first_food) or re.search(r'[^a-zA-Z\s\-]',
                                           second_food):
         return {
             "status": "Invalid",
             "message": "Food names should not contain numbers or"
             " special characters. Please enter valid food names."
         }
-    
+
     first = find_food(first_food)
     second = find_food(second_food)
 
@@ -580,8 +583,7 @@ def check_combination(first_food, second_food):
         return {
             "status": "Same food",
             "message": "They are the same ingredent so they are good to combine. Remember just don't eat too much of them."
-        }    
-    
+        }
 
     connection = get_db_connection()
 
@@ -589,7 +591,7 @@ def check_combination(first_food, second_food):
         SELECT * FROM combination_rules
         WHERE (group_one = ? AND group_two = ?)
         OR (group_one = ? AND group_two = ?)
-    """,(
+    """, (
         first["food_group"],
         second["food_group"],
         second["food_group"],
@@ -600,7 +602,7 @@ def check_combination(first_food, second_food):
 
     if rule:
         return {
-            "status":rule["result"],
+            "status": rule["result"],
             "message": rule["message"]
         }
 
@@ -612,15 +614,16 @@ def check_combination(first_food, second_food):
 
 def choose_result_image(status):
     """Choose one random image to show the result."""
+
     if status in ("Unknown food", "No special rule."):
         return "result_image/unknown_food.jpeg"
-    
+
     if status == "Same food":
         return "result_image/same.jpeg"
 
     if status == "Invalid":
         return "result_image/invalid.jpeg"
-    
+
     image_folders = {
         "Compatible": "result_image/compatible",
         "Caution": "result_image/caution",
@@ -630,7 +633,7 @@ def choose_result_image(status):
     folder_name = image_folders.get(status)
     if folder_name is None:
         return "default.png"
-    
+
     image_folder = Path(app.static_folder) / folder_name
     allowed_extensions = {".png", ".jpg", ".jpeg", ".webp"}
     images = [
@@ -640,40 +643,44 @@ def choose_result_image(status):
 
     if not images:
         return "default.png"
-    
+
     chosen_image = random.choice(images)
     return f"{folder_name}/{chosen_image.name}"
 
+
 def record_missing_food(food_name):
+    """Record the food name that is not in the database."""
+
     if re.search(r'[^a-zA-Z\s\-]', food_name):
         return
-    
+
     file_path = "missing_food.txt"
     food_clean = food_name.strip().lower()
 
     if not food_clean:
         return
-        
+
     existing_foods = []
-        
+
     if os.path.exists(file_path):
-        try: 
+        try:
             with open(file_path, "r", encoding="utf-8") as file:
                 existing_foods = [line.strip().lower() for line in file]
         except Exception as e:
-            print("Error reading missing_food.txt:", e)        
-    
+            print("Error reading missing_food.txt:", e)
+
     if food_clean not in existing_foods:
-        try: 
+        try:
             with open(file_path, "a") as file:
                 file.write(food_name.strip().title() + "\n")
             print(f"Recorded missing food: {food_name}")
-        except Exception as e:        
+        except Exception as e:
             print(f"Recorded")
 
 
-
 def is_real_email(email_address):
+    """Check whether the email addrees is valid or not."""
+
     api_key = os.environ.get("ABSTRACT_API_KEY")
 
     if not api_key or not email_address:
@@ -693,25 +700,37 @@ def is_real_email(email_address):
         print("API Error:", e)
         return True
 
-
 @app.route('/')
 def home():
+    """Return home."""
+
     return render_template('home.html')
+
 
 @app.route('/overall')
 def overall():
+    """Return overall page."""
     return render_template('overall.html')
+
 
 @app.route('/transmission')
 def transmission():
+    """Return transmission page."""
+
     return render_template('transmission.html')
+
 
 @app.route('/prevention')
 def prevention():
+    """Return prevention page."""
+
     return render_template('prevention.html')
+
 
 @app.route('/checker', methods=['GET', 'POST'])
 def checker():
+    """Return the checker page."""
+
     result = None
     first_food = ''
     second_food = ''
@@ -728,8 +747,11 @@ def checker():
                            first_food= first_food,
                            second_food= second_food)
 
+
 @app.route("/api/check", methods=["POST"])
 def api_check():
+    """API checking the email validity."""
+
     data = request.get_json(silent=True) or {}
     first_food = data.get("firstFood")
     second_food = data.get("secondFood", "").strip()
@@ -740,10 +762,12 @@ def api_check():
     result = check_combination(first_food, second_food)
     result["image"] = choose_result_image(result["status"])
     return jsonify(result)
-    
+
 
 @app.route("/contact", methods=["POST"])
 def contact():
+    """The contact footer."""
+
     customer_name = request.form.get("customer_name", "").strip()
     customer_email = request.form.get("customer_email", "") or request.form.get("email", "").strip()
     customer_message = request.form.get("customer_message", "").strip()
@@ -800,14 +824,21 @@ def contact():
 
 @app.route('/copyright')
 def copyright():
+    """Copyright page."""
+
     return render_template('copyright.html')
+
 
 @app.route('/privacy')
 def privacy():
+    """Privacy page."""
+
     return render_template('privacy.html')
+
 
 @app.route('/disclaimer')
 def disclaimer():
+    """disclaimer page."""
     return render_template('disclaimer.html')
 
 if __name__ == '__main__':

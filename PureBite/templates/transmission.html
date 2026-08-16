@@ -11,7 +11,7 @@
 </head>
 <body class="body">
     <header>
-        
+
         <div class="header">
             <a href = "{{ url_for('home')}}" class="title_link">
                 <h1 class="title">PureBite</h1>
@@ -36,19 +36,19 @@
         <main>
         <div class="overall-page">
             <div class="information">
-                <h3 class="title-overall"> 1. From home <h3> 
+                <h3 class="title-overall"> 1. From home <h3>
                 <p class="normal-text">
-                    - Many cases of food poisoning originate in home kitchens due to 
-                    poor hygiene practices, improper cooking, and inadequate food storage. 
-                    It can be caused by cross-contamination, which can occur when raw 
-                    foods come into contact with cooked foods, and undercooked meats, 
-                    eggs, and seafood are common culprits.  
-                    <br></br>
+                    - Many cases of food poisoning originate in home kitchens due to
+                    poor hygiene practices, improper cooking, and inadequate food storage.
+                    It can be caused by cross-contamination, which can occur when raw
+                    foods come into contact with cooked foods, and undercooked meats,
+                    eggs, and seafood are common culprits.
+                    <br>
                     - Some common ways food poisoning can happen at home can be devided into 5 main parts:
                     <br><br>
                     <span class="smaller-bullet-point">
-                        + Improperly preparing meals: Cooking at incorrect temperature or not following proper cooking guidelines 
-                        (for example: chicken is safe to eat at 74°C (165°F), but the cooker only cooks it at 65°C (149°F) 
+                        + Improperly preparing meals: Cooking at incorrect temperature or not following proper cooking guidelines
+                        (for example: chicken is safe to eat at 74°C (165°F), but the cooker only cooks it at 65°C (149°F)
                         and serves it straightaway, the chicken is not well-cooked, the person who eats this might get food poisoning.)
                     <br><br>
                     <!--https://qaqooking.wiki/all/how-to/how-to-cook-chicken-properly-->
@@ -56,81 +56,81 @@
                     <img src="{{ url_for('static', filename='compare-chicken.jpeg')}}"
                     alt="Comparison between raw, uncooked chicken, and cooked chicken."
                     class="home-img">
-                    </a>   
+                    </a>
                     <br><br>
                         + Handling raw meat and eggs: Not washing hands after handling raw meat and eggs can transfer harmful bacteria to food.
                     <br><br>
-                        + Not refrigerating food properly: Food left out at room temperature for too long can become contaminated. 
+                        + Not refrigerating food properly: Food left out at room temperature for too long can become contaminated.
                         (for example: you left a bowl of rice outside for the whole night without anything covering)
                     <br><br>
-                        + Using contaminated water: Drinking water that has been contaminated with harmful bacteria or viruses can also lead to 
+                        + Using contaminated water: Drinking water that has been contaminated with harmful bacteria or viruses can also lead to
                         food poisoning. (for example: water that is polluted from waste or contains chemical compounds)
                     <br><br>
-                        + Cross-contamination: Using the same cutting board for raw meat and vegetables can spread bacteria from one to the other.     
+                        + Cross-contamination: Using the same cutting board for raw meat and vegetables can spread bacteria from one to the other.
                     </span>
                 </p>
 
                 <h3 class="title-overall"> 2. From external factors </h3>
                 <p class="normal-text">
-                    - Restaurants and Food Services: Restaurants are significant sources of food poisoning, 
-                    especially when high volumes of food are prepared. Issues can arise from staff hygiene, 
-                    improper food storage, and temperature control. Sick employees handling food can lead to 
+                    - Restaurants and Food Services: Restaurants are significant sources of food poisoning,
+                    especially when high volumes of food are prepared. Issues can arise from staff hygiene,
+                    improper food storage, and temperature control. Sick employees handling food can lead to
                     widespread contamination.
                     <br><br>
-                    - Food Processing and Distribution: Contamination can occur at any point in the food 
-                    supply chain, from farming and harvesting to processing and distribution. Foods can 
-                    be contaminated by bacteria, viruses, and parasites during these stages, especially 
-                    if proper sanitation practices are not followed. 
+                    - Food Processing and Distribution: Contamination can occur at any point in the food
+                    supply chain, from farming and harvesting to processing and distribution. Foods can
+                    be contaminated by bacteria, viruses, and parasites during these stages, especially
+                    if proper sanitation practices are not followed.
                     <br><br>
-                    - For instance, the recent outbreak at Taiko Ponsonby, a Japanese restaurant in 
-                    Auckland, has been a significant concern due to the number of reported cases and 
-                    the severity of symptoms experienced by affected individuals. The restaurant has 
-                    cooperated with investigations and is working to implement corrective actions as 
-                    advised by health authorities. 
+                    - For instance, the recent outbreak at Taiko Ponsonby, a Japanese restaurant in
+                    Auckland, has been a significant concern due to the number of reported cases and
+                    the severity of symptoms experienced by affected individuals. The restaurant has
+                    cooperated with investigations and is working to implement corrective actions as
+                    advised by health authorities.
                     <br><br>
-                    - In addition to EpiSurv records, a single outbreak of suspected 
-                    scombroid fish poisoning (two notified cases) relating to smoked fish bought from 
-                    a supermarket (Table 28) was referred to NZFS. Leftover fish samples were sent to 
-                    ESR for testing and histamine levels of concern were confirmed, providing strong 
-                    evidence for scombroid fish poisoning. Onsite investigation occurred and control 
+                    - In addition to EpiSurv records, a single outbreak of suspected
+                    scombroid fish poisoning (two notified cases) relating to smoked fish bought from
+                    a supermarket (Table 28) was referred to NZFS. Leftover fish samples were sent to
+                    ESR for testing and histamine levels of concern were confirmed, providing strong
+                    evidence for scombroid fish poisoning. Onsite investigation occurred and control
                     failures were resolved.
                 <a href="{{ url_for('static', filename='table-28.jpeg')}}">
                     <img src="{{ url_for('static', filename='table-28.jpeg')}}"
                     alt="Table 28. Details of histamine (scombroid) fish poisoning outbreak referred to NZFS, 2023"
                     class="home-img">
                 </a>
-                    - Contaminated food: Certain foods are more likely to cause food poisoning, 
-                    including raw or undercooked meats, eggs, unpasteurized dairy products, and 
-                    raw fruits and vegetables that have not been properly washed.  
+                    - Contaminated food: Certain foods are more likely to cause food poisoning,
+                    including raw or undercooked meats, eggs, unpasteurized dairy products, and
+                    raw fruits and vegetables that have not been properly washed.
                 <a href="{{ url_for('static', filename='from-external.jpeg')}}">
                     <img src="{{ url_for('static', filename='from-external-thumbnail.jpeg')}}"
                     alt="Some more external sources that causes food poisoning."
                     class="home-img">
-                </a>    
+                </a>
                     - Some other sources of contaminated foods are: colorful mushrooms, pufferfish, raw bamboo shoots,...
                 </p>
-                
+
                 <h3 class="title-overall"> 3. Bacteria </h3>
                 <p class="normal-text">
-                    - Salmonella: 
-                    The most common sources of Salmonella infection are: water, milk and dairy products, 
+                    - Salmonella:
+                    The most common sources of Salmonella infection are: water, milk and dairy products,
                     shellfish harvested from contaminated river outlets containing sewage and farm effluent.
                     <a href="{{ url_for('static', filename='salmonella.jpeg')}}">
                     <img src="{{ url_for('static', filename='salmonella.jpeg')}}"
                     alt="Salmonella bacteria"
                     class="home-img">
-                    </a>   
-                    <br></br>
-                    - Staphylococci: The common sources of Staphylococci are human nose, mouth, skin, hands, spots, 
-                    boils, septic cuts, etc. The common food vehicles are dairy products, cold cooked meat and poultry, 
+                    </a>
+                    <br>
+                    - Staphylococci: The common sources of Staphylococci are human nose, mouth, skin, hands, spots,
+                    boils, septic cuts, etc. The common food vehicles are dairy products, cold cooked meat and poultry,
                     peeled cooked prawns...
                     <a href="{{ url_for('static', filename='staphylococi.jpeg')}}">
                     <img src="{{ url_for('static', filename='staphylococi.jpeg')}}"
                     alt="Staphylococci bacteria"
                     class="home-img">
                     </a>
-                    <br></br>
-                    - Clostridia: These bacteria occur mainly in soil, and food poisoning is caused usually by contaminated 
+                    <br>
+                    - Clostridia: These bacteria occur mainly in soil, and food poisoning is caused usually by contaminated
                     of vegetables. Many pigs, as well as rats and mice, habour these bacteria.
                     <a href="{{ url_for('static', filename='clostridia.jpeg')}}">
                     <img src="{{ url_for('static', filename='clostridia.jpeg')}}"
@@ -148,57 +148,57 @@
                     <span>
                         <a href="https://www.govt.nz/browse/health/food-safety/make-a-complaint-about-food-poisoning/" class="report-link"> Make a complaint about food poisoning</a>
                     </span>
-                    <br></br>
+                    <br>
                     <span class="h3"> ● MPI: </span>
-                    <span> 
+                    <span>
                         <a href="https://www.mpi.govt.nz/dmsdocument/65046/direct" class="report-link"> Annual report concerning Foodborne Diseases in New Zealand 2023</a>
                     </span>
-                    <br></br>
+                    <br>
                     <span class="h3"> ● Food And Safety: </span>
-                    <span> 
+                    <span>
                         <a href="https://www.foodsafetynews.com/2023/10/new-zealand-data-shows-increase-in-foodborne-infections/" class="report-link">
                             New Zealand data shows an increase in foodborne infections
                         </a>
                     </span>
-                    <br></br>
+                    <br>
                     <span class="h3"> ● World Health Organization: </span>
-                    <span> 
+                    <span>
                     <a href="https://www.who.int/news-room/fact-sheets/detail/food-safety" class="report-link"> Food safety </a>
                     </span>
-                    <br></br>
+                    <br>
                     <span class="h3"> ● Salmonella Bacteria structure: </span>
-                    <span> 
+                    <span>
                         <a href="https://ar.inspiredpencil.com/pictures-2023/salmonella-bacteria-structure" class="report-link"> Salmonella structure </a>
                     </span>
-                    <br></br>
+                    <br>
                     <span class="h3"> ● Staphylococci Bacteria: </span>
-                    <span> 
+                    <span>
                         <a href="https://www.cdc.gov/staphylococcus-aureus/about/index.html" class="report-link"> Staphylococci image </a>
                     </span>
-                    <br></br>
-                    <span class="h3"> ● Science photo library: </span>
-                    <span> 
-                        <a href="https://www.sciencephoto.com/media/908210/view" class="report-link"> Clostridioides bacteria </a>
+                    <br>
+                    <span class="h3"> ● Shutterstock: </span>
+                    <span>
+                        <a href="https://www.shutterstock.com/search/clostridium-difficile?dd_referrer=https%3A%2F%2Fwww.bing.com%2F" class="report-link"> Clostridioides bacteria </a>
                     </span>
-                    <br></br>
+                    <br>
                     <span class="h3"> ● Newstalk ZB: </span>
-                    <span> 
+                    <span>
                         <a href="https://www.newstalkzb.co.nz/news/national/taiko-ponsonby-japanese-restaurant-food-safety-rating-demoted-from-a-to-d-amid-food-poisoning-claims/" class="report-link">
                             ‘Why should we apologise?’: Ponsonby eatery reacts to food poisoning claims after ‘D’ rating
                         </a>
                     </span>
-                    <br></br>
+                    <br>
                     <span class="h3"> ● EasyHealthyFoods: </span>
-                    <span> 
+                    <span>
                         <a href="https://easyhealthyfoods.com/where-is-food-poisoning-found/" class="report-link">
                             Exploring the Hidden Dangers: Where Is Food Poisoning Found?
                         </a>
                     </span>
-                    <br></br>
+                    <br>
                     <span class="normal-text"> - Food poisoning in the home (Dr. Harry Zentner, 1995) </span>
-                    <br></br>
+                    <br>
                     <span class="normal-text"> - Food poisoning prevention (Greg Merry, 1997) </span>
-                    <br></br>
+                    <br>
                 </nav>
             </div>
         </div>
@@ -249,13 +249,13 @@
             <a href = "{{ url_for('copyright')}}" class="in4-in-footer"> Copyright </a>
             <a href = "{{ url_for('privacy')}}" class="in4-in-footer"> Privacy </a>
             <a href = "{{ url_for('disclaimer')}}" class="in4-in-footer"> Disclaimer </a>
-                
+
             <a href = "{{ url_for('home')}}" class="title_link">
                 <h1 class="title-bottom">PureBite</h1>
             </a>
 
         </section>
-
+        <div> <p class="normal-text">&copy; 2026 PureBite. All rights reserved.</p> </div>
     </footer>
 </body>
 </html>
